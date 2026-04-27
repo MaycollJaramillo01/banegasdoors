@@ -71,7 +71,7 @@ $MailRef = "mailto:" . $Mail;
 $Services       = "Local and long distance towing, junk car buying, jump starts, and lockout service";
 $Estimates      = "Fast Assistance";
 $Payment        = "Cash, Zelle, Card";
-$Experience     = "2+ Years";
+$Experience     = "10+ Years";
 $Schedule       = "Office hours: 6:00 AM to 6:00 PM. Emergency towing available 24/7.";
 $Coverage       = "We cover West Palm Beach, Jupiter, Boca Raton, and all Palm Beach County.";
 $LicenseNote    = "Reliable 24 Hour Service";
@@ -241,7 +241,7 @@ $Phrase = [
    =========================*/
 $Home = [
   "Familia Towing provides local and long distance towing, junk car buying, jump starts, and locked car services across West Palm Beach, Jupiter, Boca Raton, and Palm Beach County.",
-  "With more than 2 years of experience, our bilingual team responds with dependable 24 hour roadside support and clear communication."
+  "With more than 10 years of experience, our bilingual team responds with dependable 24 hour roadside support and clear communication."
 ];
 
 $About = [
@@ -458,7 +458,7 @@ $ServiceDetails = [
 $WhyChoose = [
   'eyebrow' => 'Roadside Help You Can Trust',
   'title_pre' => 'Why Choose',
-  'intro' => 'With more than 2 years of towing experience, Familia Towing helps drivers with safe transport, quick roadside assistance, and bilingual communication.',
+  'intro' => 'With more than 10 years of towing experience, Familia Towing helps drivers with safe transport, quick roadside assistance, and bilingual communication.',
   'cards' => [
     ['title' => 'Fast Response', 'text' => 'Call for towing, jump starts, lockout service, and junk car help across Palm Beach County.'],
     ['title' => 'Bilingual Support', 'text' => $BilingualNote . '. Use the Spanish or English number shown on the site.'],
