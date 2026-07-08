@@ -1,435 +1,463 @@
 <?php
-/* =========================================================
-  about-section.php
-  - Debe ser incluido en una página donde YA se cargó text.php
-  - Requisito: incluir imagen principal de towing
-========================================================= */
-
 $about = (isset($HomeAboutCopy) && is_array($HomeAboutCopy)) ? $HomeAboutCopy : [];
 
-$aboutEyebrow     = trim((string) ($about['eyebrow'] ?? ''));
-$aboutTitle       = trim((string) ($about['title'] ?? ''));
-$aboutTitleStrong = trim((string) ($about['title_strong'] ?? ''));
+$aboutEyebrow     = trim((string) ($about['eyebrow'] ?? 'About us'));
+$aboutTitle       = trim((string) ($about['title'] ?? 'Built for everyday use,'));
+$aboutTitleStrong = trim((string) ($about['title_strong'] ?? 'installed to last.'));
 $aboutDesc        = trim((string) ($about['description'] ?? ''));
+$features         = (isset($about['features']) && is_array($about['features'])) ? $about['features'] : [];
 
-$yearsValue = (int) ($ExperienceYears ?? 0);
-if ($yearsValue <= 0) $yearsValue = 1;
+$yearsValue = max(1, (int) ($ExperienceYears ?? 0));
+$yearsLabel = trim((string) ($about['badge_label'] ?? 'Years in the industry'));
+$licenseLabel = trim((string) ($LicenseNote ?? ''));
+$bilingualLabel = trim((string) ($BilingualNote ?? 'English and Spanish'));
 
-$yearsLabel    = trim((string) ($about['badge_label'] ?? ''));
-$coverageLabel = trim((string) ($Coverage ?? ''));
-$licenseLabel  = trim((string) ($LicenseNote ?? ''));
-$bilingualLabel= trim((string) ($BilingualNote ?? ''));
-
-$features = (isset($about['features']) && is_array($about['features'])) ? $about['features'] : [];
-
-// Imagen principal del bloque about
-$aboutImg    = 'assets/img/truck.jpeg';
-$aboutImgAlt = trim((string) (
-  $about['images']['back']['alt']
-  ?? $about['images']['front']['alt']
-  ?? ($PageHeroCopy['about']['title'] ?? 'Towing service image')
-));
-if ($aboutImgAlt === '') $aboutImgAlt = 'Towing service image';
-
-$ctaText = trim((string) ($about['cta'] ?? ($NavCopy['about'] ?? 'Learn more')));
+$aboutImg = trim((string) ($about['images']['front']['src'] ?? 'assets/img/fallback.jpg'));
+$aboutImgAlt = trim((string) ($about['images']['front']['alt'] ?? 'Garage door installed by Banegas Garage Doors'));
+$ctaText = trim((string) ($about['cta'] ?? 'Learn about us'));
 $ctaHref = 'about.php';
-
 $telHref = trim((string) ($PhoneRef ?? 'contact.php'));
-$telText = trim((string) ($Phone ?? ''));
-
+$telText = trim((string) ($Phone ?? 'Call us'));
 ?>
+
 <style>
-/* =========================
-   ABOUT SECTION (Premium Arch)
-   ========================= */
-.section-about-arch{
-  position:relative;
-  padding: clamp(64px, 7vw, 110px) 0;
-  background:
-    radial-gradient(70% 90% at 10% 0%, rgba(var(--brand-accent-rgb),0.14) 0%, transparent 60%),
-    radial-gradient(60% 75% at 92% 92%, rgba(var(--brand-primary-rgb),0.10) 0%, transparent 58%),
-    linear-gradient(180deg, var(--site-surface) 0%, var(--site-surface-soft) 100%);
+.home-about {
+  --about-ink: var(--brand-secondary, #07121c);
+  --about-muted: var(--site-ink-soft, #5d6b78);
+  position: relative;
   overflow: clip;
+  padding: clamp(84px, 9vw, 144px) 0 clamp(96px, 10vw, 156px);
+  background: #f6f8f9;
+  color: var(--about-ink);
 }
 
-.section-about-arch::before{
-  content:"";
-  position:absolute;
-  inset:0;
-  background-image:
-    linear-gradient(rgba(0,0,0,0.045) 1px, transparent 1px),
-    linear-gradient(90deg, rgba(0,0,0,0.045) 1px, transparent 1px);
-  background-size: 54px 54px;
-  opacity: .35;
-  pointer-events:none;
+.home-about::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  right: clamp(24px, 8vw, 128px);
+  width: 1px;
+  height: 100%;
+  background: rgba(var(--brand-secondary-rgb, 7, 18, 28), .08);
 }
 
-.section-about-arch .arch-shell{
-  width: min(1240px, 92vw);
-  margin: 0 auto;
+.home-about__shell {
   position: relative;
   z-index: 1;
+  width: min(1280px, 90vw);
+  margin: 0 auto;
 }
 
-.section-about-arch .arch-grid{
-  display:grid;
-  grid-template-columns: minmax(0, 1.05fr) minmax(0, 0.95fr);
-  gap: clamp(18px, 4vw, 56px);
+.home-about__intro {
+  display: grid;
+  grid-template-columns: minmax(0, 1.25fr) minmax(280px, .75fr);
+  gap: clamp(32px, 7vw, 104px);
+  align-items: end;
+  margin-bottom: clamp(44px, 6vw, 82px);
+}
+
+.home-about__eyebrow {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 22px;
+  color: var(--brand-primary, #075985);
+  font-size: 11px;
+  font-weight: 800;
+  letter-spacing: .18em;
+  text-transform: uppercase;
+}
+
+.home-about__eyebrow::before {
+  content: "";
+  width: 34px;
+  height: 2px;
+  background: var(--brand-accent, #09afe8);
+}
+
+.home-about h2 {
+  max-width: 850px;
+  margin: 0;
+  color: var(--about-ink);
+  font-family: var(--font-display, 'Teko', sans-serif);
+  font-size: clamp(3.4rem, 7.2vw, 7rem);
+  font-weight: 600;
+  letter-spacing: -.025em;
+  line-height: .82;
+  text-transform: uppercase;
+  text-wrap: balance;
+}
+
+.home-about h2 strong {
+  display: block;
+  color: var(--brand-primary, #075985);
+  font-weight: inherit;
+}
+
+.home-about__summary {
+  padding: 0 0 6px clamp(20px, 3vw, 42px);
+  border-left: 2px solid var(--brand-accent, #09afe8);
+}
+
+.home-about__summary p {
+  max-width: 46ch;
+  margin: 0;
+  color: var(--about-muted);
+  font-size: clamp(1rem, 1.25vw, 1.13rem);
+  line-height: 1.75;
+}
+
+.home-about__body {
+  display: grid;
+  grid-template-columns: minmax(0, 1.08fr) minmax(360px, .92fr);
+  gap: clamp(36px, 7vw, 100px);
   align-items: center;
 }
 
-.section-about-arch .arch-eyebrow{
-  display:inline-flex;
-  align-items:center;
-  gap:10px;
-  padding: 8px 14px;
-  border-radius: 999px;
-  border: 1px solid rgba(var(--brand-accent-rgb),0.40);
-  background: rgba(255,255,255,0.72);
-  color: var(--site-ink);
-  font-weight: 800;
-  letter-spacing: 1.2px;
-  text-transform: uppercase;
-  font-size: 11px;
-}
-
-.section-about-arch .arch-eyebrow::before{
-  content:"";
-  width: 9px;
-  height: 9px;
-  border-radius: 999px;
-  background: var(--brand-accent);
-  box-shadow: 0 0 0 6px rgba(var(--brand-accent-rgb),0.16);
-}
-
-.section-about-arch .content-arch h2{
-  margin: 16px 0 0;
-  font-family: var(--font-display, ui-sans-serif, system-ui);
-  color: var(--brand-secondary);
-  font-size: clamp(2.1rem, 4.6vw, 3.5rem);
-  line-height: .98;
-  letter-spacing: .2px;
-}
-
-.section-about-arch .content-arch h2 strong{
-  color: var(--brand-primary);
-  font-weight: 800;
-}
-
-.section-about-arch .content-arch p{
-  margin: 14px 0 0;
-  color: var(--site-ink-soft);
-  line-height: 1.75;
-  max-width: 70ch;
-  font-size: 1.02rem;
-}
-
-.section-about-arch .arch-badges{
-  margin-top: 18px;
-  display:flex;
-  flex-wrap: wrap;
-  gap: 10px;
-}
-
-.section-about-arch .arch-badge{
-  display:inline-flex;
-  align-items:center;
-  gap: 10px;
-  padding: 10px 12px;
-  border-radius: 999px;
-  background: var(--site-panel-soft);
-  border: 1px solid var(--site-line);
-  color: var(--site-ink);
-  font-weight: 800;
-  letter-spacing: .4px;
-  font-size: 12px;
-}
-
-.section-about-arch .arch-badge i{
-  width: 28px;
-  height: 28px;
-  display:inline-flex;
-  align-items:center;
-  justify-content:center;
-  border-radius: 999px;
-  background: rgba(var(--brand-accent-rgb),0.10);
-  color: var(--brand-accent);
-}
-
-.section-about-arch .arch-features{
-  margin-top: 18px;
-  display:grid;
-  grid-template-columns: repeat(2, minmax(0, 1fr));
-  gap: 12px;
-}
-
-.section-about-arch .arch-feature{
-  border-radius: 16px;
-  border: 1px solid var(--site-line);
-  background: var(--site-panel-soft);
-  box-shadow: 0 18px 40px rgba(0,0,0,0.08);
-  padding: 14px;
-  display:flex;
-  gap: 12px;
-  align-items:flex-start;
-}
-
-.section-about-arch .feature-icon{
-  width: 40px;
-  height: 40px;
-  border-radius: 14px;
-  background: linear-gradient(145deg, rgba(var(--brand-secondary-rgb),0.92), rgba(var(--brand-primary-rgb),0.74));
-  color: var(--brand-accent);
-  display:inline-flex;
-  align-items:center;
-  justify-content:center;
-  flex: 0 0 auto;
-}
-
-.section-about-arch .feature-body h3{
+.home-about__media {
+  position: relative;
+  min-height: clamp(520px, 60vw, 740px);
   margin: 0;
-  color: var(--site-ink);
-  font-weight: 900;
-  letter-spacing: .3px;
-  font-size: 1.02rem;
 }
 
-.section-about-arch .feature-body p{
-  margin: 6px 0 0;
-  color: var(--site-ink-soft);
-  line-height: 1.6;
-  font-size: .95rem;
+.home-about__media::before {
+  content: "";
+  position: absolute;
+  inset: 28px -22px -28px 56px;
+  border: 1px solid rgba(var(--brand-primary-rgb, 7, 89, 133), .22);
 }
 
-.section-about-arch .arch-actions{
-  margin-top: 20px;
-  display:flex;
-  flex-wrap: wrap;
-  gap: 10px;
+.home-about__media::after {
+  content: "";
+  position: absolute;
+  left: -12px;
+  bottom: -16px;
+  width: 46%;
+  height: 8px;
+  background: var(--brand-accent, #09afe8);
 }
 
-.section-about-arch .btn-arch{
-  min-height: 48px;
-  border-radius: 999px;
-  padding: 10px 18px;
-  text-decoration:none;
+.home-about__media img {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  display: block;
+  object-fit: cover;
+  object-position: center;
+  box-shadow: 0 30px 80px rgba(3, 18, 30, .16);
+}
+
+.home-about__media-caption {
+  position: absolute;
+  right: -1px;
+  top: 0;
+  z-index: 2;
+  padding: 14px 15px 18px;
+  background: var(--about-ink);
+  color: #fff;
+  font-size: 10px;
+  font-weight: 800;
+  letter-spacing: .16em;
   text-transform: uppercase;
-  letter-spacing: 1px;
+  writing-mode: vertical-rl;
+}
+
+.home-about__content {
+  position: relative;
+}
+
+.home-about__content-label {
+  margin: 0 0 18px;
+  color: var(--brand-primary, #075985);
   font-size: 11px;
-  font-weight: 900;
-  border: 1px solid transparent;
-  display:inline-flex;
-  align-items:center;
-  justify-content:center;
-  transition: transform .2s ease, background-color .2s ease, border-color .2s ease, color .2s ease;
+  font-weight: 800;
+  letter-spacing: .18em;
+  text-transform: uppercase;
 }
 
-.section-about-arch .btn-arch:focus-visible{
-  outline: 3px solid rgba(var(--brand-accent-rgb),0.42);
-  outline-offset: 3px;
+.home-about__services {
+  border-top: 1px solid rgba(var(--brand-secondary-rgb, 7, 18, 28), .16);
 }
 
-.section-about-arch .btn-arch--primary{
-  background: var(--brand-accent);
-  border-color: var(--brand-accent);
-  color: var(--brand-secondary);
+.home-about__service {
+  display: grid;
+  grid-template-columns: 42px 1fr 30px;
+  gap: 14px;
+  align-items: start;
+  padding: 20px 0;
+  border-bottom: 1px solid rgba(var(--brand-secondary-rgb, 7, 18, 28), .16);
+  transition: padding-left .25s ease, border-color .25s ease;
 }
 
-.section-about-arch .btn-arch--secondary{
-  background: rgba(var(--brand-secondary-rgb),0.10);
-  border-color: rgba(var(--brand-secondary-rgb),0.22);
-  color: var(--brand-secondary);
+.home-about__service:hover {
+  padding-left: 8px;
+  border-color: var(--brand-accent, #09afe8);
 }
 
-.section-about-arch .btn-arch:hover{
+.home-about__service-index {
+  padding-top: 2px;
+  color: var(--brand-accent, #09afe8);
+  font-family: ui-monospace, SFMono-Regular, Menlo, monospace;
+  font-size: 12px;
+  font-variant-numeric: tabular-nums;
+}
+
+.home-about__service h3 {
+  margin: 0 0 5px;
+  color: var(--about-ink);
+  font-family: var(--font-display, 'Teko', sans-serif);
+  font-size: clamp(1.4rem, 2vw, 1.8rem);
+  font-weight: 600;
+  letter-spacing: .01em;
+  line-height: 1;
+  text-transform: uppercase;
+}
+
+.home-about__service p {
+  margin: 0;
+  color: var(--about-muted);
+  font-size: .94rem;
+  line-height: 1.55;
+}
+
+.home-about__service i {
+  margin-top: 4px;
+  color: var(--brand-primary, #075985);
+  font-size: 15px;
+  text-align: right;
+}
+
+.home-about__actions {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 14px 22px;
+  margin-top: 34px;
+}
+
+.home-about__primary {
+  min-height: 52px;
+  display: inline-flex;
+  align-items: center;
+  gap: 16px;
+  padding: 0 22px;
+  background: var(--about-ink);
+  color: #fff;
+  text-decoration: none;
+  font-size: 11px;
+  font-weight: 800;
+  letter-spacing: .13em;
+  text-transform: uppercase;
+  transition: background-color .25s ease, transform .25s ease;
+}
+
+.home-about__primary:hover {
+  background: var(--brand-primary, #075985);
+  color: #fff;
   transform: translateY(-2px);
 }
 
-.section-about-arch .arch-media{
-  position:relative;
-  border-radius: 22px;
-  overflow:hidden;
-  border: 1px solid rgba(0,0,0,0.14);
-  box-shadow: 0 26px 64px rgba(0,0,0,0.14);
-  background: #ffffff;
+.home-about__call {
+  color: var(--about-ink);
+  font-size: .9rem;
+  font-weight: 800;
+  text-decoration-color: var(--brand-accent, #09afe8);
+  text-underline-offset: 6px;
 }
 
-.section-about-arch .arch-media::before{
-  content:"";
-  position:absolute;
-  inset:0;
-  background:
-    radial-gradient(80% 90% at 10% 10%, rgba(var(--brand-accent-rgb),0.18) 0%, transparent 55%),
-    linear-gradient(180deg, rgba(0,0,0,0) 0%, rgba(0,0,0,0.52) 100%);
-  pointer-events:none;
-  z-index: 1;
+.home-about__primary:focus-visible,
+.home-about__call:focus-visible {
+  outline: 3px solid rgba(var(--brand-accent-rgb, 9, 175, 232), .4);
+  outline-offset: 4px;
 }
 
-.section-about-arch .arch-media img{
-  width:100%;
-  height: clamp(340px, 42vw, 520px);
-  object-fit: cover;
-  display:block;
-  filter: saturate(1.06) contrast(1.02);
+.home-about__proof {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  margin-top: clamp(68px, 8vw, 112px);
+  border-top: 1px solid rgba(var(--brand-secondary-rgb, 7, 18, 28), .16);
+  border-bottom: 1px solid rgba(var(--brand-secondary-rgb, 7, 18, 28), .16);
 }
 
-.section-about-arch .media-card{
-  position:absolute;
-  z-index: 2;
-  left: 14px;
-  bottom: 14px;
-  right: 14px;
-  display:grid;
-  grid-template-columns: repeat(3, minmax(0,1fr));
-  gap: 10px;
+.home-about__proof-item {
+  min-height: 132px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: 24px clamp(18px, 3vw, 42px);
 }
 
-.section-about-arch .media-pill{
-  border-radius: 16px;
-  border: 1px solid rgba(255,255,255,0.28);
-  background: rgba(0,0,0,0.36);
-  color: rgba(255,255,255,0.92);
-  padding: 12px;
-  backdrop-filter: blur(6px);
+.home-about__proof-item + .home-about__proof-item {
+  border-left: 1px solid rgba(var(--brand-secondary-rgb, 7, 18, 28), .16);
 }
 
-.section-about-arch .media-pill strong{
-  display:block;
-  font-weight: 900;
-  letter-spacing: .3px;
-  font-size: 1.05rem;
-  line-height: 1.2;
-}
-
-.section-about-arch .media-pill span{
-  display:block;
-  margin-top: 4px;
-  font-size: 11px;
-  letter-spacing: 1px;
+.home-about__proof strong {
+  color: var(--about-ink);
+  font-family: var(--font-display, 'Teko', sans-serif);
+  font-size: clamp(2.1rem, 4vw, 3.6rem);
+  font-weight: 600;
+  line-height: .9;
   text-transform: uppercase;
-  opacity: .86;
 }
 
-@media (max-width: 980px){
-  .section-about-arch .arch-grid{ grid-template-columns: 1fr; }
-  .section-about-arch .arch-features{ grid-template-columns: 1fr; }
-  .section-about-arch .media-card{ grid-template-columns: 1fr; }
+.home-about__proof span {
+  margin-top: 10px;
+  color: var(--about-muted);
+  font-size: 10px;
+  font-weight: 800;
+  letter-spacing: .14em;
+  line-height: 1.45;
+  text-transform: uppercase;
 }
 
-@media (prefers-reduced-motion: reduce){
-  .section-about-arch .btn-arch{ transition: none; }
-  .section-about-arch .btn-arch:hover{ transform: none; }
+@media (max-width: 980px) {
+  .home-about__intro,
+  .home-about__body {
+    grid-template-columns: 1fr;
+  }
+
+  .home-about__intro {
+    gap: 28px;
+  }
+
+  .home-about__summary {
+    max-width: 680px;
+  }
+
+  .home-about__media {
+    width: min(720px, 94%);
+    min-height: clamp(500px, 100vw, 700px);
+  }
+}
+
+@media (max-width: 640px) {
+  .home-about {
+    padding-top: 72px;
+  }
+
+  .home-about__shell {
+    width: min(100% - 36px, 1280px);
+  }
+
+  .home-about h2 {
+    font-size: clamp(3.05rem, 15vw, 4.8rem);
+  }
+
+  .home-about__summary {
+    padding-left: 18px;
+  }
+
+  .home-about__media {
+    width: calc(100% - 14px);
+    min-height: 520px;
+  }
+
+  .home-about__media::before {
+    inset: 16px -14px -18px 28px;
+  }
+
+  .home-about__proof {
+    grid-template-columns: 1fr;
+  }
+
+  .home-about__proof-item {
+    min-height: 108px;
+    padding-left: 0;
+  }
+
+  .home-about__proof-item + .home-about__proof-item {
+    border-left: 0;
+    border-top: 1px solid rgba(var(--brand-secondary-rgb, 7, 18, 28), .16);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .home-about__service,
+  .home-about__primary {
+    transition: none;
+  }
 }
 </style>
 
-<section class="section-about-arch" id="about">
-  <div class="arch-shell">
-    <div class="arch-grid">
-      <div class="content-arch">
-        <?php if ($aboutEyebrow !== ''): ?>
-          <span class="arch-eyebrow"><?php echo htmlspecialchars($aboutEyebrow, ENT_QUOTES, 'UTF-8'); ?></span>
-        <?php endif; ?>
-
-        <?php if ($aboutTitle !== '' || $aboutTitleStrong !== ''): ?>
-          <h2>
-            <?php echo htmlspecialchars($aboutTitle, ENT_QUOTES, 'UTF-8'); ?>
-            <?php if ($aboutTitleStrong !== ''): ?>
-              <strong><?php echo htmlspecialchars($aboutTitleStrong, ENT_QUOTES, 'UTF-8'); ?></strong>
-            <?php endif; ?>
-          </h2>
-        <?php endif; ?>
-
-        <?php if ($aboutDesc !== ''): ?>
+<section class="home-about" id="about" aria-labelledby="home-about-title">
+  <div class="home-about__shell">
+    <header class="home-about__intro">
+      <div>
+        <div class="home-about__eyebrow"><?php echo htmlspecialchars($aboutEyebrow, ENT_QUOTES, 'UTF-8'); ?></div>
+        <h2 id="home-about-title">
+          <?php echo htmlspecialchars($aboutTitle, ENT_QUOTES, 'UTF-8'); ?>
+          <strong><?php echo htmlspecialchars($aboutTitleStrong, ENT_QUOTES, 'UTF-8'); ?></strong>
+        </h2>
+      </div>
+      <?php if ($aboutDesc !== ''): ?>
+        <div class="home-about__summary">
           <p><?php echo htmlspecialchars($aboutDesc, ENT_QUOTES, 'UTF-8'); ?></p>
-        <?php endif; ?>
-
-        <div class="arch-badges" aria-label="Company highlights">
-          <?php if ($yearsLabel !== ''): ?>
-            <span class="arch-badge">
-              <i class="fa-solid fa-star" aria-hidden="true"></i>
-              <?php echo (int) $yearsValue; ?>+ <?php echo htmlspecialchars($yearsLabel, ENT_QUOTES, 'UTF-8'); ?>
-            </span>
-          <?php endif; ?>
-
-          <?php if ($licenseLabel !== ''): ?>
-            <span class="arch-badge">
-              <i class="fa-solid fa-shield-halved" aria-hidden="true"></i>
-              <?php echo htmlspecialchars($licenseLabel, ENT_QUOTES, 'UTF-8'); ?>
-            </span>
-          <?php endif; ?>
-
-          <?php if ($coverageLabel !== ''): ?>
-            <span class="arch-badge">
-              <i class="fa-solid fa-location-dot" aria-hidden="true"></i>
-              <?php echo htmlspecialchars($coverageLabel, ENT_QUOTES, 'UTF-8'); ?>
-            </span>
-          <?php endif; ?>
-
-          <?php if ($bilingualLabel !== ''): ?>
-            <span class="arch-badge">
-              <i class="fa-solid fa-comments" aria-hidden="true"></i>
-              <?php echo htmlspecialchars($bilingualLabel, ENT_QUOTES, 'UTF-8'); ?>
-            </span>
-          <?php endif; ?>
         </div>
+      <?php endif; ?>
+    </header>
+
+    <div class="home-about__body">
+      <figure class="home-about__media">
+        <img src="<?php echo htmlspecialchars($aboutImg, ENT_QUOTES, 'UTF-8'); ?>"
+             alt="<?php echo htmlspecialchars($aboutImgAlt, ENT_QUOTES, 'UTF-8'); ?>"
+             loading="lazy"
+             decoding="async">
+        <figcaption class="home-about__media-caption">Huntington Park · California</figcaption>
+      </figure>
+
+      <div class="home-about__content">
+        <p class="home-about__content-label">Installation · Repair · Maintenance</p>
 
         <?php if (!empty($features)): ?>
-          <div class="arch-features" aria-label="Key features">
-            <?php foreach ($features as $feat): ?>
+          <div class="home-about__services" aria-label="Our garage door services">
+            <?php $featureNumber = 0; ?>
+            <?php foreach ($features as $feature): ?>
               <?php
-                $fi = trim((string) ($feat['icon'] ?? 'fa-clipboard-list'));
-                $ft = trim((string) ($feat['title'] ?? ''));
-                $fx = trim((string) ($feat['text'] ?? ''));
-                if ($ft === '' && $fx === '') continue;
+                $featureTitle = trim((string) ($feature['title'] ?? ''));
+                $featureText = trim((string) ($feature['text'] ?? ''));
+                $featureIcon = trim((string) ($feature['icon'] ?? 'fa-arrow-right'));
+                if ($featureTitle === '' && $featureText === '') continue;
+                $featureNumber++;
               ?>
-              <article class="arch-feature">
-                <div class="feature-icon" aria-hidden="true">
-                  <i class="fa-solid <?php echo htmlspecialchars($fi, ENT_QUOTES, 'UTF-8'); ?>"></i>
+              <article class="home-about__service">
+                <span class="home-about__service-index"><?php echo str_pad((string) $featureNumber, 2, '0', STR_PAD_LEFT); ?></span>
+                <div>
+                  <?php if ($featureTitle !== ''): ?><h3><?php echo htmlspecialchars($featureTitle, ENT_QUOTES, 'UTF-8'); ?></h3><?php endif; ?>
+                  <?php if ($featureText !== ''): ?><p><?php echo htmlspecialchars($featureText, ENT_QUOTES, 'UTF-8'); ?></p><?php endif; ?>
                 </div>
-                <div class="feature-body">
-                  <?php if ($ft !== ''): ?><h3><?php echo htmlspecialchars($ft, ENT_QUOTES, 'UTF-8'); ?></h3><?php endif; ?>
-                  <?php if ($fx !== ''): ?><p><?php echo htmlspecialchars($fx, ENT_QUOTES, 'UTF-8'); ?></p><?php endif; ?>
-                </div>
+                <i class="fa-solid <?php echo htmlspecialchars($featureIcon, ENT_QUOTES, 'UTF-8'); ?>" aria-hidden="true"></i>
               </article>
             <?php endforeach; ?>
           </div>
         <?php endif; ?>
 
-        <div class="arch-actions">
-          <a class="btn-arch btn-arch--primary" href="<?php echo htmlspecialchars($ctaHref, ENT_QUOTES, 'UTF-8'); ?>">
+        <div class="home-about__actions">
+          <a class="home-about__primary" href="<?php echo htmlspecialchars($ctaHref, ENT_QUOTES, 'UTF-8'); ?>">
             <?php echo htmlspecialchars($ctaText, ENT_QUOTES, 'UTF-8'); ?>
+            <i class="fa-solid fa-arrow-right" aria-hidden="true"></i>
           </a>
-
-          <?php if ($telText !== '' && $telHref !== ''): ?>
-            <a class="btn-arch btn-arch--secondary" href="<?php echo htmlspecialchars($telHref, ENT_QUOTES, 'UTF-8'); ?>">
+          <?php if ($telHref !== '' && $telText !== ''): ?>
+            <a class="home-about__call" href="<?php echo htmlspecialchars($telHref, ENT_QUOTES, 'UTF-8'); ?>">
               <?php echo htmlspecialchars($telText, ENT_QUOTES, 'UTF-8'); ?>
             </a>
           <?php endif; ?>
         </div>
       </div>
+    </div>
 
-      <div class="arch-media">
-        <img
-          src="<?php echo htmlspecialchars($aboutImg, ENT_QUOTES, 'UTF-8'); ?>"
-          alt="<?php echo htmlspecialchars($aboutImgAlt, ENT_QUOTES, 'UTF-8'); ?>"
-          loading="lazy"
-          decoding="async"
-        />
-
-        <div class="media-card" aria-hidden="true">
-          <div class="media-pill">
-            <strong><?php echo (int) $yearsValue; ?>+</strong>
-            <span><?php echo htmlspecialchars(($yearsLabel !== '' ? $yearsLabel : 'Years'), ENT_QUOTES, 'UTF-8'); ?></span>
-          </div>
-          <div class="media-pill">
-            <strong><?php echo htmlspecialchars(($licenseLabel !== '' ? $licenseLabel : 'Insured'), ENT_QUOTES, 'UTF-8'); ?></strong>
-            <span><?php echo htmlspecialchars(($NavCopy['services'] ?? 'Services'), ENT_QUOTES, 'UTF-8'); ?></span>
-          </div>
-          <div class="media-pill">
-            <strong><?php echo htmlspecialchars(($coverageLabel !== '' ? $coverageLabel : 'Coverage'), ENT_QUOTES, 'UTF-8'); ?></strong>
-            <span><?php echo htmlspecialchars(($NavCopy['contact_today'] ?? 'Contact'), ENT_QUOTES, 'UTF-8'); ?></span>
-          </div>
-        </div>
+    <div class="home-about__proof" aria-label="Company highlights">
+      <div class="home-about__proof-item">
+        <strong><?php echo $yearsValue; ?>+</strong>
+        <span><?php echo htmlspecialchars($yearsLabel, ENT_QUOTES, 'UTF-8'); ?></span>
+      </div>
+      <div class="home-about__proof-item">
+        <strong>Local</strong>
+        <span>Showroom at 7876 State St, Huntington Park</span>
+      </div>
+      <div class="home-about__proof-item">
+        <strong>Bilingual</strong>
+        <span><?php echo htmlspecialchars($bilingualLabel !== '' ? $bilingualLabel : $licenseLabel, ENT_QUOTES, 'UTF-8'); ?></span>
       </div>
     </div>
   </div>

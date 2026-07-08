@@ -33,6 +33,15 @@ $tik_url = $tiktok ?? '';
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/glightbox/dist/css/glightbox.min.css">
     
     <link rel="stylesheet" href="assets/css/style.css">
+
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=AW-18195680545"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+        gtag('config', 'AW-18195680545');
+    </script>
     
     <style>
         <?php echo $BrandCSSVars; ?>

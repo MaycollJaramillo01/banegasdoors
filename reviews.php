@@ -105,8 +105,8 @@ body.reviews-page .cta-forge__layout > * {
   <?php 
     $pageHeroTitle = $ReviewsPageCopy['hero_title'] ?? '';
     $pageHeroSubtitle = $ReviewsPageCopy['hero_subtitle'] ?? '';
-    $pageHeroImage = $ReviewsPageCopy['hero_image'] ?? "assets/img/stock/vision-crew.jpg";
-    if(!file_exists($pageHeroImage)) $pageHeroImage = "assets/img/hero-bg.jpg"; // fallback
+    $pageHeroImage = $ReviewsPageCopy['hero_image'] ?? "assets/img/hero/hero2.jpg";
+    if(!file_exists($pageHeroImage)) $pageHeroImage = "assets/img/fallback.jpg"; // fallback
 
     include __DIR__ . '/partials/shared/page-hero.php'; 
   ?>

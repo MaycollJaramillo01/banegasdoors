@@ -1,6 +1,15 @@
 <?php
 @session_start();
 
+/*
+  =========================================================
+  BANEGAS GARAGE DOORS CO — text.php
+  Generado por Cluster Media
+  Los campos pendientes de confirmar con el cliente están
+  marcados con comentarios "TODO CONFIRMAR".
+  =========================================================
+*/
+
 /*=========================
    PAGE NAME (Routing simple)
    =========================*/
@@ -21,10 +30,10 @@ elseif ($page_name == 'contact.php')      { $namepage = "Contact"; }
 else                                      { $namepage = ucfirst(str_replace('.php', '', $page_name)); }
 
 /*=========================
-   INFO GENERAL - FAMILIA TOWING
+   INFO GENERAL - BANEGAS GARAGE DOORS CO
    =========================*/
-$Company      = "Familia Towing";
-$CustomerName = "Familia";
+$Company      = "Banegas Garage Doors Co";
+$CustomerName = "Banegas";
 
 function detectBaseURL() {
   $scheme = (!empty($_SERVER['HTTPS']) && $_SERVER['HTTPS'] !== 'off') ? 'https' : 'http';
@@ -38,12 +47,14 @@ function detectBaseURL() {
 $BaseURL   = rtrim(detectBaseURL(), '/') . '/';
 $Domain    = $BaseURL;
 $MAVEN     = "go-maven.com";
-$Address   = "W.P.B., FL 33416";
-$PhoneName = "Spanish";
+$Address   = "7876 State St, Huntington Park, CA 90255";
+$PhoneName = "Español";
 $Phone2Name = "English";
 
-$Phone     = "+1 (561) 396-0659";
-$Phone2    = "+1 (561) 215-4377";
+/* Una sola línea telefónica bilingüe. Si el cliente confirma una
+   segunda línea, actualizar $Phone2 aquí. */
+$Phone     = "+1 (323) 413-1786";
+$Phone2    = "+1 (323) 413-1786";
 
 function telRef($p) {
   $clean = str_replace(str_split('()-/\\:?"<>|., '), '', $p);
@@ -60,68 +71,74 @@ function slugify($text) {
 
 $whatsapp_num = preg_replace('/\D+/', '', $Phone);
 if (strpos($whatsapp_num, '1') !== 0) { $whatsapp_num = '1' . $whatsapp_num; }
-$whatsapp = "https://api.whatsapp.com/send?phone=$whatsapp_num&text=Hello%20Familia%20Towing!%20I%20need%20towing%20or%20roadside%20assistance.";
+$whatsapp = "https://api.whatsapp.com/send?phone=$whatsapp_num&text=Hello%20Banegas%20Garage%20Doors!%20I%20need%20a%20free%20estimate%20for%20my%20garage%20door.";
 
-$Mail    = "info@familiatowing.com";
+$Mail    = "info@banegasgaragedoors.com";
 $MailRef = "mailto:" . $Mail;
 
 /*=========================
    GENERAL MESSAGES
    =========================*/
-$Services       = "Local and long distance towing, junk car buying, jump starts, and lockout service";
-$Estimates      = "Fast Assistance";
-$Payment        = "Cash, Zelle, Card";
+$Services       = "Garage door installation, replacement, spring repair, off-track repair, and maintenance";
+$Estimates      = "Free Estimates";
+$Payment        = "Cash, Card, Zelle"; /* TODO CONFIRMAR: métodos de pago reales con el cliente */
 $Experience     = "10+ Years";
-$Schedule       = "Office hours: 6:00 AM to 6:00 PM. Emergency towing available 24/7.";
-$Coverage       = "We cover West Palm Beach, Jupiter, Boca Raton, and all Palm Beach County.";
-$LicenseNote    = "Reliable 24 Hour Service";
+/* TODO CONFIRMAR: el sitio actual dice 9:00 AM y Yelp dice 8:30 AM. Se usa 9:00 AM (fuente: web oficial). */
+$Schedule       = "Open Monday to Saturday, 9:00 AM to 5:00 PM. Closed Sunday.";
+$Coverage       = "We serve Huntington Park, South Gate, Downey, and communities across Los Angeles County and Orange County.";
+$LicenseNote    = "Visit Our Showroom";
 $BilingualNote  = "English and Spanish Spoken";
-$TypeOfService  = "Towing and Roadside Assistance";
+$TypeOfService  = "Garage Door Installation, Repair, and Maintenance";
 
 /*=========================
-   BRAND COLORS
+   BRAND COLORS (extraídos del logo oficial)
+   Acento cian #00ADEE tomado por píxel del logo.
    =========================*/
 $BrandColors = [
-  'primary'       => '#0B0B0D',
-  'primary_rgb'   => '11, 11, 13',
-  'secondary'     => '#181818',
-  'secondary_rgb' => '24, 24, 24',
-  'accent'        => '#FF7A00',
-  'accent_rgb'    => '255, 122, 0',
-  'neutral'       => '#F7F4EF',
+  'primary'       => '#0A1826',
+  'primary_rgb'   => '10, 24, 38',
+  'secondary'     => '#142A3C',
+  'secondary_rgb' => '20, 42, 60',
+  'accent'        => '#00ADEE',
+  'accent_rgb'    => '0, 173, 238',
+  'neutral'       => '#F2F6FA',
   'white'         => '#FFFFFF'
 ];
 
 /*=========================
    SERVICE AREAS
+   (Inferidas: Huntington Park + LA County + Orange County.
+   TODO CONFIRMAR lista final de ciudades con el cliente.)
    =========================*/
 $Areas = [
-  "West Palm Beach, FL",
-  "W.P.B., FL 33416",
-  "Jupiter, FL",
-  "Boca Raton, FL",
-  "Palm Beach County, FL",
-  "Lake Worth Beach, FL",
-  "Boynton Beach, FL",
-  "Delray Beach, FL",
-  "Palm Beach Gardens, FL",
-  "Royal Palm Beach, FL",
-  "Wellington, FL",
-  "Riviera Beach, FL",
-  "Greenacres, FL",
-  "Lantana, FL",
+  "Huntington Park, CA",
+  "South Gate, CA",
+  "Bell, CA",
+  "Bell Gardens, CA",
+  "Cudahy, CA",
+  "Maywood, CA",
+  "Lynwood, CA",
+  "Downey, CA",
+  "Vernon, CA",
+  "East Los Angeles, CA",
+  "Los Angeles, CA",
+  "Montebello, CA",
+  "Paramount, CA",
+  "Los Angeles County, CA",
+  "Orange County, CA",
   "And nearby communities"
 ];
 
 /*=========================
    MAPA Y REDES SOCIALES
    =========================*/
-$GoogleMap = '<iframe src="https://maps.google.com/maps?q=West%20Palm%20Beach%2C%20FL%2033416&t=&z=11&ie=UTF8&iwloc=&output=embed" width="100%" height="450" style="border:0;" allowfullscreen loading="lazy"></iframe>';
-$facebook  = "";
-$instagram = "";
-$google = "";
-$tiktok = "";
+$GoogleMap = '<iframe src="https://maps.google.com/maps?q=7876%20State%20St%2C%20Huntington%20Park%2C%20CA%2090255&t=&z=14&ie=UTF8&iwloc=&output=embed" width="100%" height="450" style="border:0;" allowfullscreen loading="lazy"></iframe>';
+$facebook  = "https://www.facebook.com/profile.php?id=61551100976747";
+$instagram = "https://www.instagram.com/banegasgaragedoorsco";
+$google    = "https://share.google/1CYEBom46B9q2ny27";
+$tiktok    = "";
 $messenger = "";
+$yelp      = "https://www.yelp.com/biz/banegas-garage-doors-co-huntington-park"; /* Nota: si el theme no tiene ícono de Yelp en el header, agregarlo o usarlo solo en reviews. */
 
 $DirectoryLinks = [
   'bbb' => 'reviews.php',
@@ -130,38 +147,41 @@ $DirectoryLinks = [
   'homeadvisor' => 'reviews.php'
 ];
 
-$GoogleReviews = 'reviews.php';
+$GoogleReviews = $google; /* Perfil real de Google Business del cliente */
 
+/* TODO CONFIRMAR: reseñas placeholder basadas en los servicios reales.
+   La primera está parafraseada de una reseña real publicada en Yelp.
+   Reemplazar el resto con reseñas textuales aprobadas de Yelp/Google. */
 $DirectoryReviewItems = [
   [
-    'name' => 'Verified Driver',
-    'city' => 'West Palm Beach, FL',
+    'name' => 'Verified Customer',
+    'city' => 'Huntington Park, CA',
     'stars' => 5,
-    'text' => 'Familia Towing answered quickly and helped with a local tow when my car stopped running.',
+    'text' => 'A reliable company from start to finish. They handled my new garage door installation professionally.',
+    'source' => 'Yelp Review',
+    'url' => 'https://www.yelp.com/biz/banegas-garage-doors-co-huntington-park'
+  ],
+  [
+    'name' => 'Homeowner',
+    'city' => 'South Gate, CA',
+    'stars' => 5,
+    'text' => 'Fast spring replacement and clear communication in English and Spanish. Fair, upfront pricing.',
     'source' => 'Website Review',
     'url' => ''
   ],
   [
-    'name' => 'Roadside Customer',
-    'city' => 'Jupiter, FL',
+    'name' => 'Local Business Owner',
+    'city' => 'Downey, CA',
     'stars' => 5,
-    'text' => 'They helped with a jump start and explained everything clearly in English and Spanish.',
+    'text' => 'They installed a commercial door for our shop. Careful work, on time, and honest from the first estimate.',
     'source' => 'Website Review',
     'url' => ''
   ],
   [
-    'name' => 'Palm Beach Client',
-    'city' => 'Boca Raton, FL',
+    'name' => 'Residential Client',
+    'city' => 'Lynwood, CA',
     'stars' => 5,
-    'text' => 'Reliable service for long distance towing. The driver arrived prepared and handled the vehicle carefully.',
-    'source' => 'Website Review',
-    'url' => ''
-  ],
-  [
-    'name' => 'Local Customer',
-    'city' => 'Lake Worth Beach, FL',
-    'stars' => 5,
-    'text' => 'Fast lockout help and fair communication from start to finish.',
+    'text' => 'My door came off track and they got it running smoothly again quickly. Straightforward and professional.',
     'source' => 'Website Review',
     'url' => ''
   ]
@@ -171,54 +191,54 @@ $GoogleReviewItems = $DirectoryReviewItems;
 
 $ReviewSourceSummaries = [
   [
+    'source' => 'Yelp Reviews',
+    'rating' => '11+', /* TODO CONFIRMAR: Yelp muestra 11 reseñas y 25 fotos; verificar rating exacto de estrellas antes de publicar */
+    'count' => 11,
+    'label' => 'Reviews published on Yelp',
+    'url' => 'https://www.yelp.com/biz/banegas-garage-doors-co-huntington-park'
+  ],
+  [
     'source' => 'Website Reviews',
     'rating' => '5.0/5',
     'count' => 4,
     'label' => 'Based on recent customer feedback',
-    'url' => ''
-  ],
-  [
-    'source' => 'Roadside Follow-Up',
-    'rating' => '5.0/5',
-    'count' => 4,
-    'label' => 'Customer service follow-up responses',
     'url' => ''
   ]
 ];
 
 $DetailedReviewItems = [
   [
-    'name' => 'Verified Driver',
-    'city' => 'West Palm Beach, FL',
+    'name' => 'Verified Customer',
+    'city' => 'Huntington Park, CA',
     'stars' => 5,
-    'text' => 'Familia Towing answered quickly and helped with a local tow when my car stopped running.',
-    'source' => 'Website Review',
-    'date' => 'April 2026',
-    'url' => ''
+    'text' => 'A reliable company from start to finish. They handled my new garage door installation professionally.',
+    'source' => 'Yelp Review',
+    'date' => 'April 2026', /* TODO CONFIRMAR fecha real */
+    'url' => 'https://www.yelp.com/biz/banegas-garage-doors-co-huntington-park'
   ],
   [
-    'name' => 'Roadside Customer',
-    'city' => 'Jupiter, FL',
+    'name' => 'Homeowner',
+    'city' => 'South Gate, CA',
     'stars' => 5,
-    'text' => 'They helped with a jump start and explained everything clearly in English and Spanish.',
+    'text' => 'Fast spring replacement and clear communication in English and Spanish. Fair, upfront pricing.',
     'source' => 'Website Review',
     'date' => 'March 2026',
     'url' => ''
   ],
   [
-    'name' => 'Palm Beach Client',
-    'city' => 'Boca Raton, FL',
+    'name' => 'Local Business Owner',
+    'city' => 'Downey, CA',
     'stars' => 5,
-    'text' => 'Reliable service for long distance towing. The driver arrived prepared and handled the vehicle carefully.',
+    'text' => 'They installed a commercial door for our shop. Careful work, on time, and honest from the first estimate.',
     'source' => 'Website Review',
     'date' => 'February 2026',
     'url' => ''
   ],
   [
-    'name' => 'Local Customer',
-    'city' => 'Lake Worth Beach, FL',
+    'name' => 'Residential Client',
+    'city' => 'Lynwood, CA',
     'stars' => 5,
-    'text' => 'Fast lockout help and fair communication from start to finish.',
+    'text' => 'My door came off track and they got it running smoothly again quickly. Straightforward and professional.',
     'source' => 'Website Review',
     'date' => 'January 2026',
     'url' => ''
@@ -229,10 +249,10 @@ $DetailedReviewItems = [
    SEO & BRANDING SLOGANS
    =========================*/
 $Phrase = [
-  "24 Hour Towing Service in Palm Beach County",
-  "Local and Long Distance Towing",
-  "We Buy Junk Cars",
-  "Jump Start Vehicles and Locked Car Services",
+  "Garage Door Installation, Repair & Maintenance in Huntington Park",
+  "New Installation - Service - Repair",
+  "Free Estimates on Every Job",
+  "Residential, Commercial & Custom Garage Doors",
   "English and Spanish Spoken"
 ];
 
@@ -240,67 +260,67 @@ $Phrase = [
    HOME / ABOUT
    =========================*/
 $Home = [
-  "Familia Towing provides local and long distance towing, junk car buying, jump starts, and locked car services across West Palm Beach, Jupiter, Boca Raton, and Palm Beach County.",
-  "With more than 10 years of experience, our bilingual team responds with dependable 24 hour roadside support and clear communication."
+  "Banegas Garage Doors Co provides garage door installation, replacement, spring repair, off-track repair, and maintenance across Huntington Park, South Gate, Downey, and communities throughout Los Angeles and Orange County.",
+  "With more than 10 years of hands-on industry experience, our bilingual team shows up on time, gives clear pricing with free estimates, and makes sure every job is done right the first time."
 ];
 
 $About = [
-  "Familia Towing is a local towing and roadside assistance company serving drivers throughout Palm Beach County.",
-  "We cover West Palm Beach, Jupiter, Boca Raton, and nearby areas with English and Spanish support, fast dispatch, and practical help when your vehicle cannot move."
+  "Banegas Garage Doors Co is a local garage door company based in Huntington Park, dedicated to reliable installation, repair, and maintenance for homes and businesses.",
+  "Our team spent over 10 years working in the garage door industry across Los Angeles and Orange County before opening our own shop and showroom, where customers can explore door styles in person with English and Spanish support."
 ];
 
-$Mission = "To provide dependable towing and roadside assistance with fast response, safe handling, and clear bilingual communication.";
-$Vision  = "To be a trusted towing company across Palm Beach County for local drivers who need reliable help day or night.";
+$Mission = "To keep every garage door working safely and efficiently, with honest service, clear pricing, and quality workmanship that gives our customers peace of mind.";
+$Vision  = "To be the trusted garage door company for homeowners and businesses across Los Angeles and Orange County.";
 
 /*=========================
    SERVICES SECTION
    =========================*/
 $SN = $SD = $ExSD = [];
 
-$SN[1] = "Local Towing";
-$SD[1] = "Local towing for cars and light vehicles throughout West Palm Beach and nearby Palm Beach County areas.";
+$SN[1] = "Garage Door Installation";
+$SD[1] = "Professional installation of new garage doors, with styles and materials tailored to your home, needs, and budget.";
 
-$SN[2] = "Long Distance Towing";
-$SD[2] = "Long distance towing handled with careful loading, safe transport, and direct communication.";
+$SN[2] = "Garage Door Replacement";
+$SD[2] = "Expert removal of your old garage door and installation of a high-quality new door with proper alignment and safe operation.";
 
-$SN[3] = "We Buy Junk Cars";
-$SD[3] = "We buy junk cars and help remove unwanted vehicles with straightforward scheduling.";
+$SN[3] = "Spring Replacement";
+$SD[3] = "Replacement of broken or worn torsion and extension springs with durable components that restore balance and safety.";
 
-$SN[4] = "Jump Start Vehicles";
-$SD[4] = "Battery jump start assistance when your vehicle will not start at home, work, or on the road.";
+$SN[4] = "Off-Track Door Repair";
+$SD[4] = "Full inspection and realignment for doors that have come off their tracks, with repair or replacement of damaged parts.";
 
-$SN[5] = "Locked Car Services";
-$SD[5] = "Vehicle lockout help when keys are locked inside and you need access quickly.";
+$SN[5] = "Garage Door Maintenance";
+$SD[5] = "Thorough inspection, lubrication, adjustment, and safety checks that extend the life of your garage door system.";
 
-$SN[6] = "Roadside Assistance";
-$SD[6] = "Roadside assistance for drivers who need fast help before the next step is decided.";
+$SN[6] = "Commercial Garage Doors";
+$SD[6] = "Durable, high-performance door systems built for heavy daily use in commercial and industrial properties.";
 
-$SN[7] = "24 Hour Towing";
-$SD[7] = "Emergency towing support available 24/7, with office hours from 6:00 AM to 6:00 PM.";
+$SN[7] = "Custom Door Design";
+$SD[7] = "Custom garage door solutions that combine functionality, durability, and design, from carriage house to full view frameless.";
 
 $OtherServices = [
-  "Roadside Assistance",
-  "24 Hour Towing"
+  "Commercial Garage Doors",
+  "Custom Door Design"
 ];
 
 $ServicesByCategory = [
   [
-    'label' => 'Towing Services',
-    'summary_slug' => 'local-towing',
+    'label' => 'Installation & Repair',
+    'summary_slug' => 'garage-door-installation',
     'service_slugs' => [
-      'local-towing',
-      'long-distance-towing',
-      'we-buy-junk-cars',
-      'jump-start-vehicles',
-      'locked-car-services',
+      'garage-door-installation',
+      'garage-door-replacement',
+      'spring-replacement',
+      'off-track-door-repair',
+      'garage-door-maintenance',
     ]
   ],
   [
-    'label' => 'Roadside Help',
-    'summary_slug' => 'roadside-assistance',
+    'label' => 'Commercial & Custom',
+    'summary_slug' => 'commercial-garage-doors',
     'service_slugs' => [
-      'roadside-assistance',
-      '24-hour-towing'
+      'commercial-garage-doors',
+      'custom-door-design'
     ]
   ]
 ];
@@ -335,16 +355,16 @@ for ($i = 1; $i <= count($SN); $i++) {
 }
 
 $OtherServicesLandingSlugs = [
-  'roadside-assistance',
-  '24-hour-towing'
+  'commercial-garage-doors',
+  'custom-door-design'
 ];
 
 $PrimaryServiceSlugs = [
-  'local-towing',
-  'long-distance-towing',
-  'we-buy-junk-cars',
-  'jump-start-vehicles',
-  'locked-car-services'
+  'garage-door-installation',
+  'garage-door-replacement',
+  'spring-replacement',
+  'off-track-door-repair',
+  'garage-door-maintenance'
 ];
 $AllowedServiceSlugs = array_merge($PrimaryServiceSlugs, $OtherServicesLandingSlugs);
 foreach (array_keys($ServicesList) as $serviceSlug) {
@@ -387,68 +407,68 @@ usort($ServicesDisplayList, static function ($a, $b) {
 });
 
 $ServiceDetails = [
-  'local-towing' => [
-    'kicker' => 'Local Towing',
-    'headline' => 'Fast towing help near West Palm Beach',
+  'garage-door-installation' => [
+    'kicker' => 'New Installation',
+    'headline' => 'New garage doors installed the right way',
     'paragraphs' => [
-      'We provide local towing for drivers in West Palm Beach and nearby Palm Beach County communities.',
-      'Our team focuses on safe loading, clear updates, and dependable arrival.'
+      'We install new garage doors for homes and businesses across Huntington Park and the greater Los Angeles area.',
+      'Our team handles measurement, hardware, alignment, and a full safety check so your new door runs smoothly from day one.'
     ],
-    'bullets' => ['Cars and light vehicles', 'Local transport', 'Safe vehicle handling', 'English and Spanish support']
+    'bullets' => ['Residential and commercial doors', 'Multiple styles and materials', 'Proper alignment and balancing', 'Free estimates in English and Spanish']
   ],
-  'long-distance-towing' => [
-    'kicker' => 'Long Distance Towing',
-    'headline' => 'Safe transport beyond your local area',
+  'garage-door-replacement' => [
+    'kicker' => 'Door Replacement',
+    'headline' => 'Upgrade security, function, and curb appeal',
     'paragraphs' => [
-      'When your vehicle needs to move farther, Familia Towing coordinates long distance towing with careful handling.',
-      'We keep communication direct so you know the pickup and delivery details.'
+      'When an old door has reached the end of its life, we remove it safely and install a high-quality replacement tailored to your style, needs, and budget.',
+      'Every replacement includes careful installation, proper alignment, and safe operation built for long-lasting performance.'
     ],
-    'bullets' => ['Longer transport routes', 'Careful loading', 'Route coordination', 'Clear updates']
+    'bullets' => ['Old door removal', 'Quality new doors', 'Improved security and curb appeal', 'Clear, upfront pricing']
   ],
-  'we-buy-junk-cars' => [
-    'kicker' => 'Junk Cars',
-    'headline' => 'We buy junk cars and help clear space',
+  'spring-replacement' => [
+    'kicker' => 'Spring Replacement',
+    'headline' => 'Broken springs replaced safely',
     'paragraphs' => [
-      'If you have an unwanted vehicle, contact us for junk car buying and removal options.',
-      'We make scheduling simple and keep the process straightforward.'
+      'Broken or worn-out springs make your garage door unsafe and hard to operate. We replace damaged torsion and extension springs with durable, high-quality components.',
+      'Spring work is dangerous to attempt on your own — our technicians restore balance, performance, and safety the right way.'
     ],
-    'bullets' => ['Junk car buying', 'Unwanted vehicle removal', 'Simple scheduling', 'Local pickup support']
+    'bullets' => ['Torsion and extension springs', 'Durable, long-lasting parts', 'Balance and safety restored', 'Fast scheduling']
   ],
-  'jump-start-vehicles' => [
-    'kicker' => 'Jump Starts',
-    'headline' => 'Battery help when your vehicle will not start',
+  'off-track-door-repair' => [
+    'kicker' => 'Off-Track Repair',
+    'headline' => 'Doors realigned and running smoothly',
     'paragraphs' => [
-      'A dead battery can stop your day fast. We provide jump start assistance where your vehicle is located.',
-      'If a jump start is not enough, we can help coordinate the next towing step.'
+      'A garage door that has come off its tracks can be dangerous and stop working entirely. We inspect the full system, realign the door, and repair or replace damaged components.',
+      'The result is smooth, reliable operation and a door you can trust again.'
     ],
-    'bullets' => ['Battery jump starts', 'Home, work, and roadside help', 'Fast dispatch', 'Next-step towing support']
+    'bullets' => ['Full system inspection', 'Door realignment', 'Damaged parts repaired or replaced', 'Safety check included']
   ],
-  'locked-car-services' => [
-    'kicker' => 'Lockout Service',
-    'headline' => 'Help when your keys are locked inside',
+  'garage-door-maintenance' => [
+    'kicker' => 'Maintenance',
+    'headline' => 'Prevent costly repairs before they happen',
     'paragraphs' => [
-      'Locked out of your vehicle? Call Familia Towing for lockout assistance.',
-      'We respond with practical help and bilingual communication.'
+      'Regular maintenance keeps your garage door operating safely and efficiently, extends the life of the system, and prevents expensive breakdowns.',
+      'Our technicians perform a thorough inspection, lubrication, adjustment, and safety check of all major components.'
     ],
-    'bullets' => ['Locked car help', 'Driver support', 'Bilingual service', 'Fast roadside response']
+    'bullets' => ['Full inspection', 'Lubrication and adjustment', 'Safety checks', 'Longer system lifespan']
   ],
-  'roadside-assistance' => [
-    'kicker' => 'Roadside Assistance',
-    'headline' => 'Practical roadside help when plans change',
+  'commercial-garage-doors' => [
+    'kicker' => 'Commercial Doors',
+    'headline' => 'Strong solutions for your business',
     'paragraphs' => [
-      'Roadside problems can happen anywhere. We help drivers with jump starts, lockouts, and towing coordination.',
-      'Call the Spanish or English number for direct support.'
+      'We deliver durable, high-performance garage door systems for commercial and industrial properties.',
+      'Our commercial doors are built to handle heavy daily use while keeping your business secure and running smoothly.'
     ],
-    'bullets' => ['Roadside support', 'Jump starts', 'Lockout help', 'Towing coordination']
+    'bullets' => ['Commercial and industrial systems', 'Built for heavy use', 'Security focused', 'Installation and repair']
   ],
-  '24-hour-towing' => [
-    'kicker' => '24 Hour Towing',
-    'headline' => 'Emergency towing available day or night',
+  'custom-door-design' => [
+    'kicker' => 'Custom Design',
+    'headline' => 'Built to fit your style',
     'paragraphs' => [
-      'Familia Towing provides 24/7 emergency towing support across Palm Beach County.',
-      'Office hours are 6:00 AM to 6:00 PM, and emergency calls are available 24 hours.'
+      'Looking for something unique? We offer custom garage door solutions that combine functionality, durability, and design.',
+      'Choose from styles like raised panel, flush panel, carriage house, full view frameless, and planks — or design something entirely your own.'
     ],
-    'bullets' => ['24/7 emergency towing', 'Palm Beach County coverage', 'Fast response', 'Safe vehicle transport']
+    'bullets' => ['Raised and flush panel', 'Carriage house style', 'Full view frameless', 'Plank designs']
   ]
 ];
 
@@ -456,13 +476,13 @@ $ServiceDetails = [
   COPY / UI TEXT
   =========================*/
 $WhyChoose = [
-  'eyebrow' => 'Roadside Help You Can Trust',
+  'eyebrow' => 'Garage Door Experts You Can Trust',
   'title_pre' => 'Why Choose',
-  'intro' => 'With more than 10 years of towing experience, Familia Towing helps drivers with safe transport, quick roadside assistance, and bilingual communication.',
+  'intro' => 'With more than 10 years in the garage door industry, Banegas Garage Doors Co delivers honest work, on-time service, and free estimates on every job.',
   'cards' => [
-    ['title' => 'Fast Response', 'text' => 'Call for towing, jump starts, lockout service, and junk car help across Palm Beach County.'],
-    ['title' => 'Bilingual Support', 'text' => $BilingualNote . '. Use the Spanish or English number shown on the site.'],
-    ['title' => 'Need Help Now?', 'text' => 'Contact Familia Towing for 24 hour towing and roadside support.', 'btn' => ['href' => $PhoneRef, 'text' => 'Call Now']],
+    ['title' => 'Free Estimates', 'text' => 'Call for a free estimate on installation, replacement, springs, off-track repair, and maintenance.'],
+    ['title' => 'Bilingual Support', 'text' => $BilingualNote . '. Get clear answers in the language you prefer.'],
+    ['title' => 'Need Help Now?', 'text' => 'Contact Banegas Garage Doors Co for fast, reliable garage door service.', 'btn' => ['href' => $PhoneRef, 'text' => 'Call Now']],
   ],
 ];
 
@@ -478,15 +498,15 @@ $NavCopy = [
   'home' => 'Home',
   'about' => 'About',
   'services' => 'Services',
-  'projects' => 'Fleet',
+  'projects' => 'Door Design',
   'reviews' => 'Reviews',
   'contact' => 'Contact',
-  'other_services' => 'Roadside Help',
+  'other_services' => 'Commercial & Custom',
   'cta' => 'Call Now',
   'cta_mobile' => 'Call Now',
   'explore_service' => 'Explore Service',
   'view_services' => 'View Services',
-  'contact_today' => 'Contact Us Today',
+  'contact_today' => 'Get a Free Estimate',
   'leave_review' => 'Leave a Review',
   'read_reviews' => 'Read Reviews'
 ];
@@ -511,56 +531,56 @@ $HeaderCopy = [
 ];
 
 $FooterCopy = [
-  'desc' => 'Local and long distance towing, junk car buying, jump starts, and lockout service in Palm Beach County.',
+  'desc' => 'Garage door installation, replacement, spring repair, off-track repair, and maintenance in Huntington Park and across Los Angeles and Orange County.',
   'titles' => ['company' => 'Company', 'services' => 'Services', 'contact' => 'Contact Us'],
-  'labels' => ['location' => 'Location', 'phone' => 'Phone', 'hours' => 'Hours'],
+  'labels' => ['location' => 'Showroom', 'phone' => 'Phone', 'hours' => 'Hours'],
   'copyright_suffix' => 'All Rights Reserved.'
 ];
 
 $PageHeroCopy = [
-  'default' => ['title' => 'Towing Services', 'desc' => 'Local towing, long distance towing, junk car buying, jump starts, locked car service, and 24 hour roadside support.', 'bg' => 'assets/img/hero/hero1.jpg'],
-  'projects' => ['title' => 'Our Tow Truck', 'desc' => 'Dependable towing and roadside help across Palm Beach County.', 'bg' => 'assets/img/hero/hero2.jpg'],
-  'about' => ['title' => 'About ' . $Company, 'desc' => 'Bilingual towing and roadside assistance serving West Palm Beach, Jupiter, Boca Raton, and Palm Beach County.', 'bg' => 'assets/img/hero/hero3.jpg'],
-  'contact' => ['title' => 'Get Roadside Help', 'desc' => 'Call Familia Towing for towing, jump starts, lockouts, and junk car service.', 'bg' => 'assets/img/hero/hero1.jpg'],
-  'reviews' => ['title' => 'Customer Reviews', 'desc' => 'Read feedback from drivers we have helped across Palm Beach County.', 'bg' => 'assets/img/hero/hero2.jpg'],
-  'other' => ['title' => 'Roadside Help', 'desc' => 'Fast help for towing, jump starts, lockouts, and emergency calls.', 'bg' => 'assets/img/hero/hero3.jpg']
+  'default' => ['title' => 'Garage Door Services', 'desc' => 'New installation, replacement, spring repair, off-track service, maintenance, and commercial or custom doors.', 'bg' => 'assets/img/hero/hero1.jpg'],
+  'projects' => ['title' => 'Door Design Gallery', 'desc' => 'Explore raised panel, flush panel, carriage house, full view frameless, planks, and commercial styles.', 'bg' => 'assets/img/hero/hero2.jpg'],
+  'about' => ['title' => 'About ' . $Company, 'desc' => 'Local garage door installation, repair, and maintenance with a showroom in Huntington Park.', 'bg' => 'assets/img/hero/hero3.jpg'],
+  'contact' => ['title' => 'Get a Free Estimate', 'desc' => 'Call or send a message for garage door installation, repair, springs, and maintenance.', 'bg' => 'assets/img/hero/hero1.jpg'],
+  'reviews' => ['title' => 'Customer Reviews', 'desc' => 'Read feedback from homeowners and businesses across Los Angeles and Orange County.', 'bg' => 'assets/img/hero/hero2.jpg'],
+  'other' => ['title' => 'Commercial & Custom Doors', 'desc' => 'High-performance commercial systems and custom door designs built to fit your property.', 'bg' => 'assets/img/hero/hero3.jpg']
 ];
 
 $HomeHeroCopy = [
   'headline' => $Company,
-  'sub' => '24 hour towing, local and long distance service, junk car buying, jump starts, and locked car help in West Palm Beach, Jupiter, Boca Raton, and Palm Beach County.',
-  'cta_primary' => 'Call Spanish Line',
-  'cta_secondary' => 'Call English Line',
+  'sub' => 'New installation, replacement, spring repair, off-track service, and maintenance in Huntington Park and across Los Angeles and Orange County. Free estimates, English and Spanish.',
+  'cta_primary' => 'Call for Free Estimate',
+  'cta_secondary' => 'WhatsApp Us',
   'cta_primary_href' => $PhoneRef,
-  'cta_secondary_href' => $PhoneRef2,
+  'cta_secondary_href' => $whatsapp,
   'prev_label' => 'Previous slide',
   'next_label' => 'Next slide',
-  'slide_alt_prefix' => 'Familia Towing Slide',
-  'thumb_alt_prefix' => 'Towing Thumbnail'
+  'slide_alt_prefix' => 'Banegas Garage Doors Slide',
+  'thumb_alt_prefix' => 'Garage Door Thumbnail'
 ];
 
 $HomeAboutCopy = [
-  'eyebrow' => 'Palm Beach County Towing',
-  'title' => 'Fast Roadside Help,',
-  'title_strong' => 'Handled Safely.',
-  'description' => 'Familia Towing helps drivers with towing, jump starts, lockouts, long distance transport, and junk car removal.',
-  'badge_label' => 'Years in Service',
+  'eyebrow' => 'Huntington Park Garage Doors',
+  'title' => 'Quality Doors,',
+  'title_strong' => 'Done Right the First Time.',
+  'description' => 'Banegas Garage Doors Co helps homeowners and businesses with installation, replacement, springs, off-track repair, and maintenance.',
+  'badge_label' => 'Years in the Industry',
   'images' => [
-    'back' => ['src' => 'assets/img/truck.jpeg', 'alt' => 'Towing service truck'],
-    'front' => ['src' => 'assets/img/truck.jpeg', 'alt' => 'Familia Towing truck']
+    'back' => ['src' => 'assets/img/showroom.jpg', 'alt' => 'Banegas Garage Doors showroom'],
+    'front' => ['src' => 'assets/img/showroom-2-hd.jpg', 'alt' => 'Banegas Garage Doors installation']
   ],
   'features' => [
-    ['icon' => 'fa-truck-pickup', 'title' => 'Local Towing', 'text' => 'West Palm Beach, Jupiter, Boca Raton, and nearby areas.'],
-    ['icon' => 'fa-road', 'title' => 'Long Distance', 'text' => 'Vehicle transport with careful loading and communication.'],
+    ['icon' => 'fa-warehouse', 'title' => 'New Installation', 'text' => 'Residential, commercial, and custom garage doors.'],
+    ['icon' => 'fa-wrench', 'title' => 'Repair Service', 'text' => 'Springs, off-track doors, and full maintenance.'],
     ['icon' => 'fa-comments', 'title' => 'Bilingual Support', 'text' => $BilingualNote],
-    ['icon' => 'fa-clock', 'title' => '24 Hour Service', 'text' => $LicenseNote]
+    ['icon' => 'fa-store', 'title' => 'Local Showroom', 'text' => 'Visit us at 7876 State St, Huntington Park.']
   ],
   'cta' => 'Learn About Us'
 ];
 
 $AboutHeroCopy = [
   'eyebrow' => 'About ' . $Company,
-  'title' => 'Reliable towing based in Palm Beach County',
+  'title' => 'Garage door experts based in Huntington Park',
   'desc' => $About[0],
   'cta_primary' => 'Our Story',
   'cta_primary_href' => '#story',
@@ -570,85 +590,85 @@ $AboutHeroCopy = [
     ['label' => 'Service area', 'value' => $Coverage],
     ['label' => 'Schedule', 'value' => $Schedule],
     ['label' => 'Core services', 'value' => $TypeOfService],
-    ['label' => 'Availability', 'value' => $LicenseNote]
+    ['label' => 'Showroom', 'value' => $Address]
   ]
 ];
 
 $AboutStoryCopy = [
   'eyebrow' => 'Our Story',
-  'title' => 'Built on fast response and safe vehicle handling',
+  'title' => 'Built on honest work and doors done right',
   'points' => [
-    ['title' => '24 hour support', 'text' => $LicenseNote],
+    ['title' => 'Free estimates', 'text' => $Estimates . ' on every job, with clear pricing before any work starts'],
     ['title' => 'Bilingual attention', 'text' => $BilingualNote],
-    ['title' => 'Fast help', 'text' => $Estimates]
+    ['title' => 'Local showroom', 'text' => 'Explore door styles in person at ' . $Address]
   ],
-  'actions' => ['primary_text' => 'Request service', 'primary_href' => $PhoneRef, 'secondary_prefix' => 'Call'],
+  'actions' => ['primary_text' => 'Request an estimate', 'primary_href' => $PhoneRef, 'secondary_prefix' => 'Call'],
   'stats' => ['years_label' => 'Years of Experience', 'services_label' => 'Core services', 'areas_label' => 'Service areas', 'areas_separator' => ', ', 'areas_preview_count' => 5]
 ];
 
 $AboutCredentialsCopy = [
   'eyebrow' => 'Why work with us',
-  'title' => 'Reliable help when your vehicle cannot move',
-  'intro' => 'Every call is handled with direct communication, bilingual support, and practical next steps.',
+  'title' => 'Reliable help for every garage door',
+  'intro' => 'Every job starts with a free estimate, honest pricing, and respect for your time and property.',
   'list' => [
-    ['label' => 'Contact', 'value' => $Phone . ' | ' . $Phone2],
-    ['label' => 'Availability', 'value' => $LicenseNote],
+    ['label' => 'Contact', 'value' => $Phone],
+    ['label' => 'Hours', 'value' => $Schedule],
     ['label' => 'Core services', 'value' => $TypeOfService],
     ['label' => 'Coverage', 'value' => $Coverage],
     ['text' => $Estimates . ' | ' . $BilingualNote]
   ],
-  'cta' => ['title' => 'Need towing now?', 'desc' => 'Call for towing, jump starts, lockouts, and junk car removal.', 'primary_text' => 'Call Now', 'primary_href' => $PhoneRef, 'secondary_prefix' => 'Call']
+  'cta' => ['title' => 'Need garage door help?', 'desc' => 'Call for installation, replacement, springs, off-track repair, and maintenance.', 'primary_text' => 'Call Now', 'primary_href' => $PhoneRef, 'secondary_prefix' => 'Call']
 ];
 
-$AboutServicesSummaryCopy = ['eyebrow' => 'Services', 'title' => 'How we help', 'desc' => $TypeOfService . ' across Palm Beach County.', 'link_label' => 'Learn more'];
-$ServicesListCopy = ['eyebrow' => 'Scope', 'title' => 'Towing services we provide', 'desc' => $Services, 'link_label' => 'Learn more'];
-$BrandsCopy = ['tagline' => 'Trusted by Drivers Across Palm Beach County'];
+$AboutServicesSummaryCopy = ['eyebrow' => 'Services', 'title' => 'How we help', 'desc' => $TypeOfService . ' across Los Angeles and Orange County.', 'link_label' => 'Learn more'];
+$ServicesListCopy = ['eyebrow' => 'Scope', 'title' => 'Garage door services we provide', 'desc' => $Services, 'link_label' => 'Learn more'];
+$BrandsCopy = ['tagline' => 'Trusted by Homeowners and Businesses Across LA & Orange County'];
 
 $HomeServicesCopy = [
-  'eyebrow' => 'Towing Services',
-  'title' => 'Built for Drivers',
-  'title_strong' => 'Who Need Help Fast',
-  'desc' => 'Local towing, long distance towing, junk car buying, jump starts, locked car service, and 24 hour towing.',
+  'eyebrow' => 'Garage Door Services',
+  'title' => 'Everything Your',
+  'title_strong' => 'Garage Door Needs',
+  'desc' => 'New installation, replacement, spring repair, off-track service, maintenance, and commercial or custom doors.',
   'link_label' => 'Contact',
-  'more_title' => 'Need Roadside Help?',
-  'more_desc' => 'Call Familia Towing and tell us your location, vehicle, and what happened.',
-  'more_button' => 'Call for Service',
+  'more_title' => 'Not Sure What You Need?',
+  'more_desc' => 'Call and describe the problem — we will explain your options and give you a free estimate.',
+  'more_button' => 'Call for Free Estimate',
   'more_href' => $PhoneRef
 ];
 
 $HomeMaintenanceCopy = [
-  'tagline' => 'Reliable Tow Service',
-  'title' => 'Tow, Unlock,',
-  'title_strong' => 'Jump Start',
-  'desc' => 'From roadside emergencies to junk car pickup, Familia Towing responds with practical vehicle help.',
+  'tagline' => 'Reliable Garage Door Service',
+  'title' => 'Install, Repair,',
+  'title_strong' => 'Maintain',
+  'desc' => 'From new door installation to broken springs, Banegas Garage Doors Co responds with practical, honest solutions.',
   'cards' => [
-    ['icon' => 'fa-truck', 'title' => 'Local & Long Distance', 'text' => 'Towing service for short local routes and longer vehicle transport.', 'action' => 'See Details'],
-    ['icon' => 'fa-car-battery', 'title' => 'Jump Starts', 'text' => 'Battery jump start help when your vehicle will not turn on.', 'action' => 'See Details'],
-    ['icon' => 'fa-key', 'title' => 'Lockout Service', 'text' => 'Locked car service when keys are inside the vehicle.', 'action' => 'See Details'],
-    ['icon' => 'fa-recycle', 'title' => 'Junk Cars', 'text' => 'We buy junk cars and help clear unwanted vehicles.', 'action' => 'See Details']
+    ['icon' => 'fa-warehouse', 'title' => 'Installation & Replacement', 'text' => 'New garage doors installed with proper alignment and safe operation.', 'action' => 'See Details'],
+    ['icon' => 'fa-cogs', 'title' => 'Spring Replacement', 'text' => 'Broken torsion or extension springs replaced with durable parts.', 'action' => 'See Details'],
+    ['icon' => 'fa-tools', 'title' => 'Off-Track Repair', 'text' => 'Doors realigned and damaged components repaired or replaced.', 'action' => 'See Details'],
+    ['icon' => 'fa-shield-alt', 'title' => 'Maintenance', 'text' => 'Inspection, lubrication, and safety checks that prevent costly repairs.', 'action' => 'See Details']
   ],
   'foundation' => [
-    ['icon' => 'fa-phone-volume', 'title' => '24/7 Calls', 'subtitle' => 'Emergency towing support'],
+    ['icon' => 'fa-file-invoice-dollar', 'title' => 'Free Estimates', 'subtitle' => 'On every job'],
     ['icon' => 'fa-language', 'title' => 'Bilingual', 'subtitle' => 'English and Spanish'],
-    ['icon' => 'fa-star', 'title' => $ExperienceYears . '+ Years', 'subtitle' => 'Field experience']
+    ['icon' => 'fa-star', 'title' => $ExperienceYears . '+ Years', 'subtitle' => 'Industry experience']
   ]
 ];
 
 $WhyCopy = [
-  'badge' => 'Trusted Towing Choice',
-  'title_prefix' => 'Why Drivers Choose',
-  'description' => 'Our towing service is built around fast response, safe vehicle handling, and bilingual communication.',
+  'badge' => 'Trusted Garage Door Choice',
+  'title_prefix' => 'Why Customers Choose',
+  'description' => 'Our service is built around honest pricing, quality workmanship, and doors done right the first time.',
   'stats' => [
-    ['value' => $ExperienceYears . '+', 'label' => 'Years in Service'],
+    ['value' => $ExperienceYears . '+', 'label' => 'Years of Experience'],
     ['value' => count($ServicesList) . '+', 'label' => 'Services Offered'],
-    ['value' => '24/7', 'label' => 'Emergency Towing']
+    ['value' => '100%', 'label' => 'Free Estimates']
   ],
-  'service_area_label' => 'Coverage and Availability',
+  'service_area_label' => 'Coverage and Hours',
   'features' => [
-    ['icon' => 'fa-comments', 'title' => 'Clear Communication', 'text' => $BilingualNote . '. Call the Spanish or English line.'],
-    ['icon' => 'fa-truck-fast', 'title' => 'Fast Dispatch', 'text' => 'Share your location and vehicle issue so we can send the right help.'],
-    ['icon' => 'fa-shield-alt', 'title' => 'Safe Handling', 'text' => 'We focus on careful loading and transport for every tow.'],
-    ['icon' => 'fa-clock', 'title' => '24 Hour Support', 'text' => $Schedule]
+    ['icon' => 'fa-comments', 'title' => 'Clear Communication', 'text' => $BilingualNote . '. Straight answers and upfront pricing.'],
+    ['icon' => 'fa-file-invoice-dollar', 'title' => 'Free Estimates', 'text' => 'Know the price before any work starts — no surprises.'],
+    ['icon' => 'fa-shield-alt', 'title' => 'Quality Workmanship', 'text' => 'Proper alignment, durable parts, and safe operation on every job.'],
+    ['icon' => 'fa-clock', 'title' => 'Dependable Hours', 'text' => $Schedule]
   ],
   'cta_label' => 'Call Now'
 ];
@@ -656,88 +676,88 @@ $WhyCopy = [
 $MissionCopy = ['mission_title' => 'Our Mission', 'vision_title' => 'Our Vision'];
 
 $ProcessCopy = [
-  'title' => 'How We Respond',
-  'title_strong' => 'When You Call',
-  'desc' => 'Our process keeps towing and roadside service simple from first call to final drop-off.',
+  'title' => 'How We Work',
+  'title_strong' => 'From Call to Install',
+  'desc' => 'Our process keeps garage door service simple from the first call to the final safety check.',
   'steps' => [
-    ['icon' => 'fa-phone', 'title' => 'Call Us', 'text' => 'Tell us your location, vehicle, and what kind of help you need.'],
-    ['icon' => 'fa-location-dot', 'title' => 'Confirm Details', 'text' => 'We confirm pickup point, service type, and destination when needed.'],
-    ['icon' => 'fa-truck-fast', 'title' => 'Dispatch Help', 'text' => 'Our driver heads to your location for towing or roadside assistance.'],
-    ['icon' => 'fa-check-circle', 'title' => 'Complete Service', 'text' => 'We help finish the tow, jump start, lockout, or junk car pickup safely.']
+    ['icon' => 'fa-phone', 'title' => 'Call Us', 'text' => 'Tell us about your door — installation, repair, or maintenance.'],
+    ['icon' => 'fa-file-invoice-dollar', 'title' => 'Free Estimate', 'text' => 'We inspect, explain your options, and give you clear pricing.'],
+    ['icon' => 'fa-calendar-check', 'title' => 'Schedule', 'text' => 'We set a service date that works for you and show up on time.'],
+    ['icon' => 'fa-check-circle', 'title' => 'Done Right', 'text' => 'Installation or repair completed with a full safety check.']
   ]
 ];
 
 $FaqCopy = [
   'title' => 'Frequently Asked Questions',
   'items' => [
-    ['q' => 'Do you provide 24 hour service?', 'a' => 'Yes. Emergency towing support is available 24/7. Office hours are 6:00 AM to 6:00 PM.'],
-    ['q' => 'Do you speak Spanish?', 'a' => 'Yes. Familia Towing speaks English and Spanish.'],
+    ['q' => 'Do you offer free estimates?', 'a' => 'Yes. Every job starts with a free estimate and clear, upfront pricing.'],
+    ['q' => 'Do you speak Spanish?', 'a' => 'Yes. Banegas Garage Doors Co speaks English and Spanish.'],
     ['q' => 'What areas do you cover?', 'a' => $Coverage],
-    ['q' => 'Do you buy junk cars?', 'a' => 'Yes. We buy junk cars and help schedule removal for unwanted vehicles.']
+    ['q' => 'Do you have a showroom?', 'a' => 'Yes. Visit our showroom at 7876 State St, Huntington Park, CA 90255 — open Monday to Saturday, 9:00 AM to 5:00 PM.']
   ]
 ];
 
 $AreasCopy = [
   'title' => 'Serving',
-  'title_strong' => 'Palm Beach County',
-  'subtitle' => 'Coverage includes West Palm Beach, Jupiter, Boca Raton, and nearby communities.',
+  'title_strong' => 'Los Angeles & Orange County',
+  'subtitle' => 'Coverage includes Huntington Park, South Gate, Downey, and nearby communities.',
   'cta_label' => 'Request Service in Your Area',
-  'map_overlay' => 'Active Towing Coverage',
-  'license_pills' => ['24 Hour Service', 'English & Spanish', 'Local & Long Distance']
+  'map_overlay' => 'Active Service Coverage',
+  'license_pills' => ['Free Estimates', 'English & Spanish', 'Residential & Commercial']
 ];
 
 $CtaCopy = [
-  'badge' => $ExperienceYears . '+ Years in Towing',
-  'title' => 'Need Towing',
-  'title_strong' => 'Right Now?',
-  'paragraph' => $Company . ' provides local and long distance towing, junk car buying, jump starts, and locked car service across Palm Beach County.',
-  'features' => ['24 Hour Service', 'Bilingual Team', 'Fast Assistance'],
-  'button' => 'Call for Service',
-  'card_title' => 'Speak With Familia Towing',
-  'card_subtitle' => 'Fast response for towing and roadside calls',
-  'row_call_label' => 'Call for towing',
-  'row_license_label' => 'Availability',
-  'row_license_title' => $LicenseNote,
+  'badge' => $ExperienceYears . '+ Years in Garage Doors',
+  'title' => 'Need Garage Door',
+  'title_strong' => 'Help Today?',
+  'paragraph' => $Company . ' provides installation, replacement, spring repair, off-track service, and maintenance across Los Angeles and Orange County.',
+  'features' => ['Free Estimates', 'Bilingual Team', 'Local Showroom'],
+  'button' => 'Call for Free Estimate',
+  'card_title' => 'Speak With Banegas Garage Doors',
+  'card_subtitle' => 'Fast response for garage door service',
+  'row_call_label' => 'Call for service',
+  'row_license_label' => 'Showroom',
+  'row_license_title' => $Address,
   'row_service_label' => 'Coverage Area',
   'whatsapp_button' => 'WhatsApp Us',
   'book_button' => 'Start Request'
 ];
 
 $ContactFormCopy = [
-  'eyebrow' => 'Request Service',
-  'title' => "Let's Get You",
-  'title_strong' => 'Back on the Road.',
-  'desc' => 'Send your location, vehicle details, and service needed. For emergencies, call directly.',
+  'eyebrow' => 'Request an Estimate',
+  'title' => "Let's Get Your",
+  'title_strong' => 'Door Working Right.',
+  'desc' => 'Send your address, door type, and the service you need. For faster help, call directly.',
   'method_labels' => ['call' => 'Call or Text', 'hours' => 'Business Hours'],
   'form_labels' => ['name' => 'Name', 'phone' => 'Phone', 'email' => 'Email', 'service' => 'Service', 'message' => 'Service Details'],
-  'placeholders' => ['service' => 'Select service type', 'service_other' => 'Other / Custom Request', 'message' => 'Describe your location, vehicle, and what happened...'],
-  'submit' => 'Send Service Request',
+  'placeholders' => ['service' => 'Select service type', 'service_other' => 'Other / Custom Request', 'message' => 'Describe your garage door, the issue, and your location...'],
+  'submit' => 'Send Estimate Request',
   'honeypot_label' => 'Leave this field empty'
 ];
 
-$MapCopy = ['title' => 'Locate', 'title_strong' => 'Familia Towing', 'labels' => ['location' => 'Service Base', 'call' => 'Phone', 'hours' => 'Hours']];
+$MapCopy = ['title' => 'Visit', 'title_strong' => 'Our Showroom', 'labels' => ['location' => 'Showroom', 'call' => 'Phone', 'hours' => 'Hours']];
 
-$TestimonialsCopy = ['title' => 'Driver Feedback', 'title_strong' => 'From Real Calls', 'desc' => 'Read customer feedback from towing and roadside assistance calls across Palm Beach County.', 'button_label' => 'Read More Reviews', 'button_href' => 'reviews.php', 'fallback_name' => 'Verified Client'];
+$TestimonialsCopy = ['title' => 'Customer Feedback', 'title_strong' => 'From Real Jobs', 'desc' => 'Read feedback from installation, repair, and maintenance customers across Los Angeles and Orange County.', 'button_label' => 'Read More Reviews', 'button_href' => 'reviews.php', 'fallback_name' => 'Verified Client'];
 
 $TrustedDirectoriesCopy = [
   'eyebrow' => 'Trusted Feedback Sources',
   'title' => 'Customer Service Highlights',
-  'desc' => 'Explore feedback from drivers helped by Familia Towing.',
+  'desc' => 'Explore reviews and recent work from Banegas Garage Doors Co.',
   'cards' => [
-    ['icon' => 'fa-award', 'subtitle' => 'Website', 'title' => 'Website Reviews', 'text' => 'Read direct feedback from towing and roadside customers.', 'url' => 'reviews.php', 'tags' => ['Client Feedback', 'Verified Responses']],
-    ['icon' => 'fa-phone', 'subtitle' => 'Follow-Up', 'title' => 'Service Follow-Up', 'text' => 'See customer satisfaction highlights after towing calls.', 'url' => 'reviews.php', 'tags' => ['Roadside Help', 'Service Quality']],
-    ['icon' => 'fa-car', 'subtitle' => 'Drivers', 'title' => 'Driver Experiences', 'text' => 'Explore feedback from local towing, jump starts, and lockouts.', 'url' => 'reviews.php', 'tags' => ['Local Drivers', 'Fast Response']],
-    ['icon' => 'fa-map', 'subtitle' => 'Coverage', 'title' => 'Palm Beach County', 'text' => 'Read comments from drivers across West Palm Beach, Jupiter, and Boca Raton.', 'url' => 'reviews.php', 'tags' => ['County Coverage', 'Trusted Service']]
+    ['icon' => 'fa-star', 'subtitle' => 'Yelp', 'title' => 'Yelp Reviews', 'text' => 'Read verified customer reviews on our Yelp profile.', 'url' => $yelp, 'tags' => ['Verified Feedback', 'Huntington Park']],
+    ['icon' => 'fa-map-marker-alt', 'subtitle' => 'Google', 'title' => 'Google Business Profile', 'text' => 'Find us on Google and read customer reviews.', 'url' => $google, 'tags' => ['Google Reviews', 'Local Business']],
+    ['icon' => 'fa-camera', 'subtitle' => 'Instagram', 'title' => 'Project Photos', 'text' => 'See recent installations and door styles on Instagram.', 'url' => $instagram, 'tags' => ['Recent Work', 'Door Styles']],
+    ['icon' => 'fa-thumbs-up', 'subtitle' => 'Facebook', 'title' => 'Facebook Page', 'text' => 'Follow Banegas Garage Doors Co for updates and projects.', 'url' => $facebook, 'tags' => ['Community', 'Updates']]
   ]
 ];
 
 $ReviewsPageCopy = [
   'hero_title' => 'Customer Reviews',
-  'hero_subtitle' => 'See what drivers across Palm Beach County say about working with us.',
-  'hero_image' => 'assets/img/stock/vision-crew.jpg',
+  'hero_subtitle' => 'See what homeowners and businesses across Los Angeles and Orange County say about working with us.',
+  'hero_image' => 'assets/img/hero/hero2.jpg',
   'list_eyebrow' => 'Reviews',
   'list_title' => 'What Our Customers Say',
-  'list_desc' => 'Recent feedback from towing and roadside assistance customers.',
+  'list_desc' => 'Recent feedback from garage door installation, repair, and maintenance customers.',
   'list_cta' => 'Leave a Review'
 ];
 
@@ -750,19 +770,19 @@ $ReviewFormCopy = [
   'captcha_error' => 'Incorrect security code. Please try again.',
   'labels' => ['name' => 'Your Name', 'city' => 'City / Location', 'rating' => 'Rating', 'rating_hint' => '(Select stars)', 'review' => 'Your Review', 'security' => 'Security Check', 'refresh' => 'Refresh', 'captcha' => 'Enter the code shown above'],
   'captcha_alt' => 'Captcha image',
-  'placeholders' => ['name' => '', 'city' => 'e.g. West Palm Beach, FL', 'review' => 'Tell us how we did...'],
+  'placeholders' => ['name' => '', 'city' => 'e.g. Huntington Park, CA', 'review' => 'Tell us how we did...'],
   'submit' => 'Submit Review'
 ];
 
-$GalleryHeroCopy = ['eyebrow' => 'Our Gallery', 'title' => 'Familia Towing in Action', 'desc' => 'Explore towing and roadside service moments from ' . $Company . ' across Palm Beach County.', 'cta_text' => 'Call Now', 'cta_href' => $PhoneRef];
+$GalleryHeroCopy = ['eyebrow' => 'Our Gallery', 'title' => 'Banegas Garage Doors in Action', 'desc' => 'Explore installations, door styles, and service work from ' . $Company . ' across Los Angeles and Orange County.', 'cta_text' => 'Call Now', 'cta_href' => $PhoneRef];
 
 $ProjectsIntroCopy = [
   'label' => 'Our Work',
-  'title_line1' => 'Towing',
-  'title_line2' => 'Support.',
-  'outline_line1' => 'On The Road',
-  'outline_line2' => 'Day Or Night.',
-  'desc' => 'At ' . $Company . ', every call is handled with safe vehicle care and clear communication.',
+  'title_line1' => 'Doors',
+  'title_line2' => 'Done Right.',
+  'outline_line1' => 'Installed To',
+  'outline_line2' => 'Last For Years.',
+  'desc' => 'At ' . $Company . ', every installation and repair is handled with careful workmanship and clear communication.',
   'stats' => [
     ['value' => $ExperienceYears . '+', 'label' => 'Years of Experience'],
     ['value' => count($ServicesList) . '+', 'label' => 'Services Offered'],
@@ -770,36 +790,36 @@ $ProjectsIntroCopy = [
   ]
 ];
 
-$ProjectsBeforeAfterCopy = ['eyebrow' => 'Service', 'title' => 'Before & After', 'desc' => 'See how roadside help gets drivers moving again.', 'before_label' => 'Before', 'after_label' => 'After'];
+$ProjectsBeforeAfterCopy = ['eyebrow' => 'Service', 'title' => 'Before & After', 'desc' => 'See how a new door transforms security and curb appeal.', 'before_label' => 'Before', 'after_label' => 'After'];
 $ProjectsStatsCopy = ['items' => [
-  ['icon' => 'fa-hourglass-half', 'value' => $ExperienceYears . '+', 'label' => 'Years of Service'],
-  ['icon' => 'fa-truck', 'value' => count($ServicesList) . '+', 'label' => 'Towing Services'],
+  ['icon' => 'fa-hourglass-half', 'value' => $ExperienceYears . '+', 'label' => 'Years of Experience'],
+  ['icon' => 'fa-warehouse', 'value' => count($ServicesList) . '+', 'label' => 'Door Services'],
   ['icon' => 'fa-map-location-dot', 'value' => count($Areas), 'label' => 'Areas Served'],
-  ['icon' => 'fa-clock', 'value' => '24/7', 'label' => 'Emergency Towing']
+  ['icon' => 'fa-file-invoice-dollar', 'value' => '100%', 'label' => 'Free Estimates']
 ]];
 
-$ProjectsGalleryCopy = ['eyebrow' => 'Service Gallery', 'title' => 'Selected Work &', 'title_strong' => 'Recent Calls', 'videos_label' => 'Videos', 'empty' => 'Projects coming soon.', 'image_title' => 'Service Photo', 'video_title' => 'Service Video'];
-$ServiceHeroCopy = ['badge' => 'Towing Service', 'cta_primary' => 'Call Now', 'cta_secondary' => 'Explore Service'];
+$ProjectsGalleryCopy = ['eyebrow' => 'Service Gallery', 'title' => 'Selected Work &', 'title_strong' => 'Recent Installations', 'videos_label' => 'Videos', 'empty' => 'Projects coming soon.', 'image_title' => 'Project Photo', 'video_title' => 'Project Video'];
+$ServiceHeroCopy = ['badge' => 'Garage Door Service', 'cta_primary' => 'Call Now', 'cta_secondary' => 'Explore Service'];
 $ServiceIntroCopy = [
   'eyebrow' => 'Our Method',
   'title' => 'How We Deliver',
-  'title_strong' => 'Roadside Help',
+  'title_strong' => 'Garage Door Service',
   'desc' => 'We keep the process simple so you know what to expect from call to completion.',
   'steps' => [
-    ['icon' => 'fa-comments', 'title' => 'Call', 'text' => 'We start by confirming your location and service need.'],
-    ['icon' => 'fa-map-location-dot', 'title' => 'Dispatch', 'text' => 'A driver heads your way with the right support.'],
-    ['icon' => 'fa-truck', 'title' => 'Service', 'text' => 'We complete the tow, jump start, lockout, or junk car pickup.']
+    ['icon' => 'fa-comments', 'title' => 'Call', 'text' => 'We confirm your door type, the issue, and your location.'],
+    ['icon' => 'fa-file-invoice-dollar', 'title' => 'Estimate', 'text' => 'You get a free estimate with clear, upfront pricing.'],
+    ['icon' => 'fa-tools', 'title' => 'Service', 'text' => 'We complete the installation or repair with a full safety check.']
   ]
 ];
 
-$ServiceDetailsCopy = ['badge_title' => 'Familia Towing Promise', 'badge_subtitle' => 'Service Focused', 'title_prefix' => 'Professional', 'button' => 'Call Now'];
+$ServiceDetailsCopy = ['badge_title' => 'Banegas Promise', 'badge_subtitle' => 'Done Right the First Time', 'title_prefix' => 'Professional', 'button' => 'Call Now'];
 $ServiceFaqCopy = [
   'eyebrow' => 'Common Questions',
   'title' => 'Info About Our',
-  'title_strong' => 'Towing Service',
+  'title_strong' => 'Garage Door Service',
   'items' => [
-    ['icon' => 'fa-hourglass-half', 'question' => 'How fast can you arrive?', 'answer' => 'Arrival time depends on your location and traffic. Call with your exact location for current availability.'],
-    ['icon' => 'fa-file-invoice-dollar', 'question' => 'Do you buy junk cars?', 'answer' => 'Yes. ' . $Company . ' buys junk cars and helps schedule removal.'],
+    ['icon' => 'fa-hourglass-half', 'question' => 'How fast can you come out?', 'answer' => 'Scheduling depends on your location and the service needed. Call with your address for current availability.'],
+    ['icon' => 'fa-file-invoice-dollar', 'question' => 'Do you offer free estimates?', 'answer' => 'Yes. ' . $Company . ' provides free estimates on every job.'],
     ['icon' => 'fa-language', 'question' => 'Do you speak Spanish?', 'answer' => $BilingualNote . '.'],
     ['icon' => 'fa-map', 'question' => 'What areas do you serve?', 'answer' => $Coverage]
   ],
@@ -809,16 +829,16 @@ $ServiceFaqCopy = [
 $ServiceCtaCopy = [
   'tag' => 'Need Help?',
   'title' => "Let's Get Your",
-  'title_strong' => 'Vehicle Moving',
-  'paragraph' => 'Call for %s across West Palm Beach, Jupiter, Boca Raton, and Palm Beach County.',
+  'title_strong' => 'Door Moving Again',
+  'paragraph' => 'Call for %s across Huntington Park and communities in Los Angeles and Orange County.',
   'subject_fallback' => 'service',
-  'features' => ['24/7', 'Bilingual', $Experience],
+  'features' => ['Free Estimates', 'Bilingual', $Experience],
   'primary' => 'Call Now',
   'secondary_prefix' => 'Call'
 ];
 
-$OtherServicesCopy = ['label' => 'Additional Help', 'title' => 'More Ways We Can Help', 'title_strong' => 'On The Road', 'item_note' => 'Professional towing and roadside assistance.', 'cta_title' => 'Have a specific request?', 'cta_text' => 'From emergency towing to junk car pickup, call and tell us what you need.', 'cta_button' => $Estimates, 'page_desc' => 'Additional roadside help tailored to your vehicle situation.'];
-$FounderCopy = ['title' => 'A Note from', 'title_strong' => 'The Owner', 'quote' => 'At ' . $Company . ', we believe towing is about trust, response, and safe vehicle care. Our goal is to help every driver with practical service and clear communication.', 'role' => 'Owner', 'image_alt' => $CustomerName];
+$OtherServicesCopy = ['label' => 'Commercial & Custom', 'title' => 'More Ways We Can Help', 'title_strong' => 'With Your Doors', 'item_note' => 'Professional garage door solutions for every property.', 'cta_title' => 'Have a specific request?', 'cta_text' => 'From commercial systems to custom designs, call and tell us what you need.', 'cta_button' => $Estimates, 'page_desc' => 'Commercial door systems and custom designs tailored to your property.'];
+$FounderCopy = ['title' => 'A Note from', 'title_strong' => 'The Owner', 'quote' => 'At ' . $Company . ', we believe garage door work is about honesty, showing up on time, and doing the job right the first time. Our goal is to give every customer a safe, reliable door and clear communication.', 'role' => 'Owner', 'image_alt' => $CustomerName];
 
 $AriaCopy = [
   'call' => 'Click to call',
@@ -832,8 +852,8 @@ $AriaCopy = [
   'email' => 'Email'
 ];
 
-$TestimonialsPageCopy = ['eyebrow' => $NavCopy['reviews'] ?? 'Reviews', 'title' => 'What Customers Say', 'desc' => 'Trusted feedback from drivers across Palm Beach County.', 'card_title' => 'Read Verified Reviews', 'card_desc' => 'See feedback from towing and roadside service customers.', 'card_button' => $NavCopy['read_reviews'] ?? 'Read Reviews', 'card_link' => 'reviews.php'];
-$ThankYouCopy = ['title' => 'Thank You', 'description' => 'Thank you for contacting ' . $Company . '. We will be in touch shortly.', 'eyebrow' => 'Thank You', 'headline' => 'We received your request', 'body' => 'Thank you for contacting ' . $Company . '. Our team will reach out soon to confirm your towing or roadside service details.', 'cta_call' => 'Click to Call', 'cta_home' => 'Back to Home'];
+$TestimonialsPageCopy = ['eyebrow' => $NavCopy['reviews'] ?? 'Reviews', 'title' => 'What Customers Say', 'desc' => 'Trusted feedback from customers across Los Angeles and Orange County.', 'card_title' => 'Read Verified Reviews', 'card_desc' => 'See feedback from garage door installation and repair customers.', 'card_button' => $NavCopy['read_reviews'] ?? 'Read Reviews', 'card_link' => 'reviews.php'];
+$ThankYouCopy = ['title' => 'Thank You', 'description' => 'Thank you for contacting ' . $Company . '. We will be in touch shortly.', 'eyebrow' => 'Thank You', 'headline' => 'We received your request', 'body' => 'Thank you for contacting ' . $Company . '. Our team will reach out soon to confirm your garage door service details and estimate.', 'cta_call' => 'Click to Call', 'cta_home' => 'Back to Home'];
 $LabelsCopy = ['service_areas' => 'Service Areas', 'call' => 'Call', 'email' => 'Email'];
 
 /*=========================
@@ -860,9 +880,9 @@ $BrandCSSVars .= <<<CSS
   --site-panel:#ffffff;
   --site-panel-soft:rgba(255,255,255,0.78);
   --site-line:rgba(var(--brand-secondary-rgb),0.14);
-  --site-dark:#0a0a0b;
-  --site-dark-2:#161616;
-  --site-dark-3:#1f1f1f;
+  --site-dark:#07121c;
+  --site-dark-2:#0e1d2b;
+  --site-dark-3:#152838;
   --site-dark-line:rgba(var(--brand-accent-rgb),0.26);
   --site-dark-text:#ffffff;
   --site-dark-muted:rgba(255,255,255,0.72);
@@ -874,13 +894,13 @@ body{
     linear-gradient(180deg, var(--brand-neutral) 0%, #ffffff 100%);
 }
 #hero-4.hero4{
-  background: linear-gradient(130deg, #000 0%, var(--brand-secondary) 58%, #2a1600 100%) !important;
+  background: linear-gradient(130deg, #010a12 0%, var(--brand-secondary) 58%, #003a5c 100%) !important;
 }
 #hero-4 .hero4__slides::after{
-  background: linear-gradient(to bottom, rgba(0,0,0,0.78) 0%, rgba(0,0,0,0.5) 42%, rgba(0,0,0,0.88) 100%) !important;
+  background: linear-gradient(to bottom, rgba(1,10,18,0.78) 0%, rgba(1,10,18,0.5) 42%, rgba(1,10,18,0.88) 100%) !important;
 }
 #hero-4 .hero4__content{
-  background: linear-gradient(145deg, rgba(0,0,0,0.92), rgba(var(--brand-secondary-rgb),0.78)) !important;
+  background: linear-gradient(145deg, rgba(1,10,18,0.92), rgba(var(--brand-secondary-rgb),0.78)) !important;
   border: 1px solid rgba(var(--brand-accent-rgb),0.55) !important;
 }
 #hero-4 .hero4__content::before{
@@ -892,7 +912,7 @@ body{
 .cta-premium-section .btn-cta-primary,
 .section-contact-premium .btn-submit-arch{
   background: var(--brand-accent) !important;
-  color: #080808 !important;
+  color: #04121e !important;
   border-color: var(--brand-accent) !important;
 }
 #hero-4 .hero4__btn--ghost,
@@ -913,7 +933,7 @@ body{
 .cta-premium-section,
 .section-contact-premium,
 .section-map-contact{
-  background: linear-gradient(135deg, #000 0%, var(--brand-secondary) 100%) !important;
+  background: linear-gradient(135deg, #010a12 0%, var(--brand-secondary) 100%) !important;
 }
 .section-about-arch .arch-eyebrow,
 .section-services-premium .sv-eyebrow,
@@ -958,7 +978,7 @@ body{
 .section-maint-pro .maint-card-dark:hover,
 .section-remodel-why .feature-card:hover,
 .section-process .process-step:hover{
-  box-shadow: 0 22px 48px rgba(0,0,0,0.28) !important;
+  box-shadow: 0 22px 48px rgba(1,10,18,0.28) !important;
 }
 .section-about-arch .btn-arch,
 .section-remodel-why .btn-gold,
@@ -973,7 +993,7 @@ body{
 .cta-premium-section .btn-cta-primary:hover,
 .section-contact-premium .btn-submit-arch:hover{
   background: color-mix(in srgb, var(--brand-accent) 84%, #fff 16%) !important;
-  color: #080808 !important;
+  color: #04121e !important;
 }
 .section-areas .btn-area{
   border-color: var(--brand-accent) !important;
@@ -981,7 +1001,7 @@ body{
 }
 .section-areas .btn-area:hover{
   background: var(--brand-accent) !important;
-  color: #080808 !important;
+  color: #04121e !important;
 }
 .section-contact-premium .form-control-arch:focus{
   border-bottom-color: var(--brand-accent) !important;
@@ -995,7 +1015,7 @@ body{
   gap:6px;
   padding:5px;
   border-radius:999px;
-  background:#0b0b0d;
+  background:#0a1826;
   border:1px solid rgba(var(--brand-accent-rgb),0.45);
 }
 .language-switcher button{
@@ -1012,7 +1032,7 @@ body{
 .language-switcher button.active,
 .language-switcher button:hover{
   background:var(--brand-accent);
-  color:#050505;
+  color:#04121e;
 }
 .goog-te-banner-frame,
 .skiptranslate iframe{

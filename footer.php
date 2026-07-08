@@ -416,7 +416,7 @@ $footerPhoneLabel2 = trim((string) ($Phone2Name ?? 'Secondary'));
         position: fixed;
         right: 18px;
         bottom: 18px;
-        z-index: 9999;
+        z-index: 40;
         display: flex;
         flex-direction: column;
         gap: 10px;
@@ -445,14 +445,6 @@ $footerPhoneLabel2 = trim((string) ($Phone2Name ?? 'Secondary'));
     .fabtn.call { background: var(--brand-primary); }
     .fabtn.call-alt { background: var(--brand-accent); color: var(--brand-secondary); }
     .fabtn.whatsapp { background: #25D366; }
-    .fabtn.messenger { background: #0084FF; }
-    .fabtn.fb { background: #1877F2; }
-    .fabtn.instagram { background: #E1306C; }
-    .fabtn.google { background: #4285F4; }
-    .fabtn.tiktok { background: #111111; }
-
-    .bubble-mobile { display: inline-flex; }
-
     @keyframes floatingBubble {
         0%, 100% { transform: translateY(0); }
         50% { transform: translateY(-5px); }
@@ -472,32 +464,40 @@ $footerPhoneLabel2 = trim((string) ($Phone2Name ?? 'Secondary'));
             <i class="fab fa-whatsapp"></i>
         </a>
     <?php endif; ?>
-    <?php if(!empty($messenger)): ?>
-        <a class="fabtn messenger" href="<?php echo $messenger; ?>" target="_blank" aria-label="<?php echo htmlspecialchars($AriaCopy['messenger'] ?? ''); ?>">
-            <i class="fab fa-facebook-messenger"></i>
-        </a>
-    <?php endif; ?>
-    <?php if(!empty($facebook)): ?>
-        <a class="fabtn fb bubble-mobile" href="<?php echo $facebook; ?>" target="_blank" aria-label="<?php echo htmlspecialchars($AriaCopy['facebook'] ?? ''); ?>">
-            <i class="fab fa-facebook-f"></i>
-        </a>
-    <?php endif; ?>
-    <?php if(!empty($instagram)): ?>
-        <a class="fabtn instagram bubble-mobile" href="<?php echo $instagram; ?>" target="_blank" aria-label="<?php echo htmlspecialchars($AriaCopy['instagram'] ?? ''); ?>">
-            <i class="fab fa-instagram"></i>
-        </a>
-    <?php endif; ?>
-    <?php if(!empty($google)): ?>
-        <a class="fabtn google bubble-mobile" href="<?php echo $google; ?>" target="_blank" aria-label="<?php echo htmlspecialchars($AriaCopy['google'] ?? ''); ?>">
-            <i class="fab fa-google"></i>
-        </a>
-    <?php endif; ?>
-    <?php if(!empty($tiktok)): ?>
-        <a class="fabtn tiktok bubble-mobile" href="<?php echo $tiktok; ?>" target="_blank" aria-label="<?php echo htmlspecialchars($AriaCopy['tiktok'] ?? ''); ?>">
-            <i class="fab fa-tiktok"></i>
-        </a>
-    <?php endif; ?>
 </div>
 <script src="assets/js/jquery-3.7.1.min.js"></script>
 <script src="assets/js/main.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+<?php if (basename($_SERVER['SCRIPT_NAME'] ?? '') === 'index.php'): ?>
+<script>
+    (function () {
+        const conversionTarget = 'AW-18195680545/_XGbCLvssb0cEKGasORD';
+        const callLinks = document.querySelectorAll('a[href^="tel:"]');
+
+        callLinks.forEach((link) => {
+            link.addEventListener('click', (event) => {
+                if (typeof gtag !== 'function') return;
+
+                const href = link.getAttribute('href');
+                if (!href) return;
+
+                event.preventDefault();
+
+                let hasNavigated = false;
+                const continueCall = () => {
+                    if (hasNavigated) return;
+                    hasNavigated = true;
+                    window.location.href = href;
+                };
+
+                gtag('event', 'conversion', {
+                    'send_to': conversionTarget,
+                    'event_callback': continueCall
+                });
+
+                window.setTimeout(continueCall, 1000);
+            });
+        });
+    }());
+</script>
+<?php endif; ?>

@@ -13,7 +13,7 @@ if (empty($cardImg)) {
      if (file_exists($tryImg)) $cardImg = $tryImg;
 }
 if (empty($cardImg)) {
-    $cardImg = "assets/img/truck.jpeg";
+    $cardImg = "assets/img/fallback.jpg";
 }
 
 // 2. Features Fallback (Más técnico)

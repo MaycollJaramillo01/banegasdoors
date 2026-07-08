@@ -187,7 +187,7 @@ if (!function_exists('serviceHomeImage')) {
       }
     }
 
-    return 'assets/img/truck.jpeg';
+    return 'assets/img/fallback.jpg';
   }
 }
 

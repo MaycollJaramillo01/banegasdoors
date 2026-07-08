@@ -129,13 +129,22 @@ if (is_dir($heroDirAbs)) {
 natsort($heroFiles);
 $heroFiles = array_values($heroFiles);
 
+// When enhanced hero assets exist, keep the original low-resolution files as
+// non-destructive source material without exposing duplicate slides.
+$enhancedHeroFiles = array_values(array_filter($heroFiles, static function ($file) {
+  return str_contains(strtolower((string) pathinfo($file, PATHINFO_FILENAME)), '-hd');
+}));
+if (!empty($enhancedHeroFiles)) {
+  $heroFiles = $enhancedHeroFiles;
+}
+
 $imageFiles = [];
 foreach ($heroFiles as $file) {
   $ext = strtolower((string) pathinfo($file, PATHINFO_EXTENSION));
   if (in_array($ext, $imageExts, true)) $imageFiles[] = $file;
 }
 
-$defaultPoster = !empty($imageFiles) ? $heroDirRel . '/' . $imageFiles[0] : 'assets/img/stock/remodel-main.jpg';
+$defaultPoster = !empty($imageFiles) ? $heroDirRel . '/' . $imageFiles[0] : 'assets/img/fallback.jpg';
 $slides = [];
 
 foreach ($heroFiles as $index => $file) {
@@ -339,6 +348,8 @@ foreach ($slides as $slide) {
   object-fit: cover;
   object-position: center center;
   display: block;
+  image-rendering: auto;
+  filter: saturate(1.04) contrast(1.03);
 }
 
 .hero-displace__webgl {

@@ -33,7 +33,7 @@ if (empty($detailImage) && !empty($heroImageMain)) {
 }
 
 if (empty($detailImage)) {
-    $detailImage = 'assets/img/truck.jpeg';
+    $detailImage = 'assets/img/fallback.jpg';
 }
 
 // Features por defecto si no hay específicas

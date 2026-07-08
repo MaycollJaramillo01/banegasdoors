@@ -1,32 +1,32 @@
 <?php
 if (!isset($BrandColors)) include_once __DIR__ . '/../../text.php';
 
-$galleryCandidates = [
-    'assets/img/truck.jpeg',
-    'assets/img/hero/hero1.jpg',
-    'assets/img/hero/hero2.jpg',
-    'assets/img/hero/hero3.jpg',
-    'assets/img/services/Local Towing.png',
-    'assets/img/services/Long Distance Towing.png',
-    'assets/img/services/We Buy Junk Cars.png',
-    'assets/img/services/Jump Start Vehicles.png',
-    'assets/img/services/Locked Car Services.png',
-    'assets/img/services/Roadside Assistance.png',
-    'assets/img/services/24 Hour Towing.png'
-];
-$galleryItems = [];
-$seenMedia = [];
+$galleryDirAbs = __DIR__ . '/../../assets/img/gallery';
+$galleryDirRel = 'assets/img/gallery';
+$galleryExts = ['jpg', 'jpeg', 'png', 'webp', 'avif'];
+$galleryFiles = [];
 
-foreach ($galleryCandidates as $rel) {
-    $abs = __DIR__ . '/../../' . str_replace('/', DIRECTORY_SEPARATOR, $rel);
-    if (!is_file($abs)) continue;
-    if (isset($seenMedia[$rel])) continue;
-    $seenMedia[$rel] = true;
+if (is_dir($galleryDirAbs)) {
+    $scanned = scandir($galleryDirAbs);
+    if (is_array($scanned)) {
+        foreach ($scanned as $file) {
+            if ($file === '.' || $file === '..') continue;
+            if (!is_file($galleryDirAbs . DIRECTORY_SEPARATOR . $file)) continue;
+            $ext = strtolower((string) pathinfo($file, PATHINFO_EXTENSION));
+            if (!in_array($ext, $galleryExts, true)) continue;
+            $galleryFiles[] = $file;
+        }
+    }
+}
+natsort($galleryFiles);
+
+$galleryItems = [];
+foreach ($galleryFiles as $file) {
     $galleryItems[] = [
-        'src' => $rel,
+        'src' => $galleryDirRel . '/' . $file,
         'cat' => 'images',
         'type' => 'image',
-        'title' => 'Familia Towing Image'
+        'title' => 'Banegas Garage Doors Project'
     ];
 }
 
@@ -324,7 +324,7 @@ $tabLabels = [
     <div class="container">
         <div class="gal-header" data-aos="fade-up">
             <span class="gal-eyebrow">Project Gallery</span>
-            <h2 class="gal-title">Towing Gallery <br><strong>From Recent Work</strong></h2>
+            <h2 class="gal-title">Garage Door Gallery <br><strong>From Recent Work</strong></h2>
         </div>
 
         <div class="gallery-filter-nav" data-aos="fade-up" data-aos-delay="100">

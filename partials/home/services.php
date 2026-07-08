@@ -168,7 +168,7 @@ if (!function_exists('homeServicesMinimalImage')) {
       }
     }
 
-    return 'assets/img/truck.jpeg';
+    return 'assets/img/fallback.jpg';
   }
 }
 

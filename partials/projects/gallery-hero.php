@@ -18,7 +18,7 @@ $galleryCtaHref = $gallery['cta_href'] ?? 'contact.php';
       align-items: center;
       justify-content: center;
       text-align: center;
-      background: url('assets/img/stock/modern-living.jpg') center/cover no-repeat fixed;
+      background: url('assets/img/hero/hero1.jpg') center/cover no-repeat fixed;
       color: var(--color-light);
       overflow: hidden;
     }
