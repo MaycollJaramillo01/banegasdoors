@@ -14,6 +14,9 @@ $bilingualLabel = trim((string) ($BilingualNote ?? 'English and Spanish'));
 
 $aboutImg = trim((string) ($about['images']['front']['src'] ?? 'assets/img/fallback.jpg'));
 $aboutImgAlt = trim((string) ($about['images']['front']['alt'] ?? 'Garage door installed by Banegas Garage Doors'));
+$aboutVideo = trim((string) ($about['video']['src'] ?? ''));
+$aboutVideoPoster = trim((string) ($about['video']['poster'] ?? $aboutImg));
+$aboutVideoLabel = trim((string) ($about['video']['label'] ?? 'Banegas Garage Doors showroom video'));
 $ctaText = trim((string) ($about['cta'] ?? 'Learn about us'));
 $ctaHref = 'about.php';
 $telHref = trim((string) ($PhoneRef ?? 'contact.php'));
@@ -116,7 +119,8 @@ $telText = trim((string) ($Phone ?? 'Call us'));
 
 .home-about__media {
   position: relative;
-  min-height: clamp(520px, 60vw, 740px);
+  min-height: 0;
+  aspect-ratio: 16 / 9;
   margin: 0;
 }
 
@@ -137,7 +141,8 @@ $telText = trim((string) ($Phone ?? 'Call us'));
   background: var(--brand-accent, #09afe8);
 }
 
-.home-about__media img {
+.home-about__media img,
+.home-about__media video {
   position: absolute;
   inset: 0;
   width: 100%;
@@ -146,6 +151,10 @@ $telText = trim((string) ($Phone ?? 'Call us'));
   object-fit: cover;
   object-position: center;
   box-shadow: 0 30px 80px rgba(3, 18, 30, .16);
+}
+
+.home-about__media video {
+  background: #06131f;
 }
 
 .home-about__media-caption {
@@ -327,7 +336,7 @@ $telText = trim((string) ($Phone ?? 'Call us'));
 
   .home-about__media {
     width: min(720px, 94%);
-    min-height: clamp(500px, 100vw, 700px);
+    min-height: 0;
   }
 }
 
@@ -350,7 +359,7 @@ $telText = trim((string) ($Phone ?? 'Call us'));
 
   .home-about__media {
     width: calc(100% - 14px);
-    min-height: 520px;
+    min-height: 0;
   }
 
   .home-about__media::before {
@@ -399,10 +408,18 @@ $telText = trim((string) ($Phone ?? 'Call us'));
 
     <div class="home-about__body">
       <figure class="home-about__media">
-        <img src="<?php echo htmlspecialchars($aboutImg, ENT_QUOTES, 'UTF-8'); ?>"
-             alt="<?php echo htmlspecialchars($aboutImgAlt, ENT_QUOTES, 'UTF-8'); ?>"
-             loading="lazy"
-             decoding="async">
+        <?php if ($aboutVideo !== '' && is_file(__DIR__ . '/../../' . $aboutVideo)): ?>
+          <video autoplay muted loop playsinline controls preload="metadata"
+                 poster="<?php echo htmlspecialchars($aboutVideoPoster, ENT_QUOTES, 'UTF-8'); ?>"
+                 aria-label="<?php echo htmlspecialchars($aboutVideoLabel, ENT_QUOTES, 'UTF-8'); ?>">
+            <source src="<?php echo htmlspecialchars($aboutVideo, ENT_QUOTES, 'UTF-8'); ?>" type="video/mp4">
+          </video>
+        <?php else: ?>
+          <img src="<?php echo htmlspecialchars($aboutImg, ENT_QUOTES, 'UTF-8'); ?>"
+               alt="<?php echo htmlspecialchars($aboutImgAlt, ENT_QUOTES, 'UTF-8'); ?>"
+               loading="lazy"
+               decoding="async">
+        <?php endif; ?>
         <figcaption class="home-about__media-caption">Huntington Park · California</figcaption>
       </figure>
 

@@ -26,6 +26,8 @@ $tiktokRef = trim((string) ($tiktok ?? ''));
 $googleRef = trim((string) ($google ?? ''));
 $messengerRef = trim((string) ($messenger ?? ''));
 $googleMap = (string) ($GoogleMap ?? '');
+$showroomImage = 'assets/img/showroom.jpg';
+$showroomVideo = 'assets/video/showroom.mp4';
 
 $logoPath = 'assets/img/logos.png';
 $domainRef = trim((string) ($Domain ?? ($BaseURL ?? '')));
@@ -68,12 +70,12 @@ $services = array_values(array_unique($services));
 
 $socials = [];
 $socialCandidates = [
-    ['href' => $facebookRef, 'icon' => 'fa-brands fa-facebook-f', 'label' => 'Facebook'],
-    ['href' => $instagramRef, 'icon' => 'fa-brands fa-instagram', 'label' => 'Instagram'],
-    ['href' => $whatsappRef, 'icon' => 'fa-brands fa-whatsapp', 'label' => 'WhatsApp'],
-    ['href' => $tiktokRef, 'icon' => 'fa-brands fa-tiktok', 'label' => 'TikTok'],
-    ['href' => $googleRef, 'icon' => 'fa-brands fa-google', 'label' => 'Google'],
-    ['href' => $messengerRef, 'icon' => 'fa-brands fa-facebook-messenger', 'label' => 'Messenger'],
+    ['key' => 'facebook', 'href' => $facebookRef, 'icon' => 'fa-brands fa-facebook-f', 'label' => 'Facebook'],
+    ['key' => 'instagram', 'href' => $instagramRef, 'icon' => 'fa-brands fa-instagram', 'label' => 'Instagram'],
+    ['key' => 'whatsapp', 'href' => $whatsappRef, 'icon' => 'fa-brands fa-whatsapp', 'label' => 'WhatsApp'],
+    ['key' => 'tiktok', 'href' => $tiktokRef, 'icon' => 'fa-brands fa-tiktok', 'label' => 'TikTok'],
+    ['key' => 'google', 'href' => $googleRef, 'icon' => 'fa-brands fa-google', 'label' => 'Google'],
+    ['key' => 'messenger', 'href' => $messengerRef, 'icon' => 'fa-brands fa-facebook-messenger', 'label' => 'Messenger'],
 ];
 foreach ($socialCandidates as $item) {
     $href = trim((string) ($item['href'] ?? ''));
@@ -116,8 +118,8 @@ if (isset($_GET['vcard'])) {
         'TITLE:Owner'
     ];
 
-    if ($phoneClean !== '') $vcard[] = 'TEL;TYPE=WORK,VOICE:' . $phoneClean;
-    if ($phone2Clean !== '') $vcard[] = 'TEL;TYPE=CELL,VOICE:' . $phone2Clean;
+    if ($phoneClean !== '') $vcard[] = 'TEL;TYPE=CELL,VOICE:' . $phoneClean;
+    if ($phone2Clean !== '') $vcard[] = 'TEL;TYPE=WORK,VOICE:' . $phone2Clean;
     if ($email !== '') $vcard[] = 'EMAIL;TYPE=INTERNET:' . $email;
     if ($city !== '' || $region !== '') $vcard[] = 'ADR;TYPE=WORK:;;;' . $city . ';' . $region . ';;USA';
     if ($domainRef !== '' && $domainRef !== '#') $vcard[] = 'URL:' . $domainRef;
@@ -376,6 +378,18 @@ if (isset($_GET['vcard'])) {
             color: var(--brand-accent);
         }
 
+        .bcsocial .bc-social--facebook {
+            background: #1877f2;
+            border-color: #1877f2;
+            color: #fff;
+        }
+
+        .bcsocial .bc-social--google {
+            background: #fff;
+            border-color: rgba(255, 255, 255, 0.72);
+            color: #4285f4;
+        }
+
         .bcnotes {
             margin-top: auto;
             display: flex;
@@ -452,6 +466,41 @@ if (isset($_GET['vcard'])) {
             line-height: 1.45;
             font-weight: 600;
             font-size: 0.92rem;
+        }
+
+        .bcshowroom {
+            position: relative;
+            min-height: 190px;
+            border-radius: 12px;
+            overflow: hidden;
+            background: var(--brand-secondary);
+        }
+
+        .bcshowroom img,
+        .bcshowroom video {
+            width: 100%;
+            height: 100%;
+            min-height: 190px;
+            max-height: 250px;
+            object-fit: cover;
+            display: block;
+        }
+
+        .bcshowroom video {
+            background: var(--brand-secondary);
+        }
+
+        .bcshowroom figcaption {
+            position: absolute;
+            left: 12px;
+            bottom: 12px;
+            padding: 7px 10px;
+            border-radius: 6px;
+            background: rgba(var(--brand-secondary-rgb), 0.88);
+            color: #fff;
+            font-size: 0.75rem;
+            font-weight: 700;
+            letter-spacing: 0.02em;
         }
 
         .bcservices h3 {
@@ -695,7 +744,7 @@ if (isset($_GET['vcard'])) {
                 <?php if (!empty($socials)): ?>
                     <div class="bcsocial" aria-label="Social links">
                         <?php foreach ($socials as $social): ?>
-                            <a href="<?php echo htmlspecialchars((string) $social['href'], ENT_QUOTES, 'UTF-8'); ?>" target="_blank" rel="noopener" aria-label="<?php echo htmlspecialchars((string) $social['label'], ENT_QUOTES, 'UTF-8'); ?>">
+                            <a class="bc-social--<?php echo htmlspecialchars((string) ($social['key'] ?? ''), ENT_QUOTES, 'UTF-8'); ?>" href="<?php echo htmlspecialchars((string) $social['href'], ENT_QUOTES, 'UTF-8'); ?>" target="_blank" rel="noopener" aria-label="<?php echo htmlspecialchars((string) $social['label'], ENT_QUOTES, 'UTF-8'); ?>">
                                 <i class="<?php echo htmlspecialchars((string) $social['icon'], ENT_QUOTES, 'UTF-8'); ?>"></i>
                             </a>
                         <?php endforeach; ?>
@@ -745,6 +794,15 @@ if (isset($_GET['vcard'])) {
                     </article>
                     <?php endif; ?>
                 </section>
+
+                <?php if (is_file(__DIR__ . '/' . $showroomVideo)): ?>
+                <figure class="bcshowroom">
+                    <video autoplay muted loop playsinline controls preload="metadata" poster="<?php echo htmlspecialchars($showroomImage, ENT_QUOTES, 'UTF-8'); ?>" aria-label="Video tour of the Banegas Garage Doors showroom in Huntington Park">
+                        <source src="<?php echo htmlspecialchars($showroomVideo, ENT_QUOTES, 'UTF-8'); ?>" type="video/mp4">
+                    </video>
+                    <figcaption>Visit our Huntington Park showroom</figcaption>
+                </figure>
+                <?php endif; ?>
 
                 <?php if (!empty($services)): ?>
                 <section class="bcservices">

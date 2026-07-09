@@ -146,6 +146,12 @@ $footerPhoneLabel2 = trim((string) ($Phone2Name ?? 'Secondary'));
         display: block;
     }
 
+    .f-social-btn--facebook,
+    .f-social-btn--google {
+        background: #ffffff;
+        border-color: rgba(255, 255, 255, 0.72);
+    }
+
     .f-social-btn:hover {
         background: rgba(var(--brand-accent-rgb), 0.14);
         border-color: var(--f-accent);
@@ -317,7 +323,7 @@ $footerPhoneLabel2 = trim((string) ($Phone2Name ?? 'Secondary'));
                 <?php if (!empty($footerSocialItems)): ?>
                     <div class="f-socials">
                         <?php foreach ($footerSocialItems as $item): ?>
-                            <a href="<?php echo htmlspecialchars($item['url'], ENT_QUOTES, 'UTF-8'); ?>" target="_blank" rel="noopener" class="f-social-btn" title="<?php echo htmlspecialchars($item['title'], ENT_QUOTES, 'UTF-8'); ?>">
+                            <a href="<?php echo htmlspecialchars($item['url'], ENT_QUOTES, 'UTF-8'); ?>" target="_blank" rel="noopener" class="f-social-btn f-social-btn--<?php echo htmlspecialchars($item['key'], ENT_QUOTES, 'UTF-8'); ?>" title="<?php echo htmlspecialchars($item['title'], ENT_QUOTES, 'UTF-8'); ?>">
                                 <?php if (!empty($footerSocialLogos[$item['key']])): ?>
                                     <img src="<?php echo htmlspecialchars($footerSocialLogos[$item['key']], ENT_QUOTES, 'UTF-8'); ?>" alt="<?php echo htmlspecialchars($item['title'], ENT_QUOTES, 'UTF-8'); ?>">
                                 <?php else: ?>

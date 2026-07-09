@@ -66,7 +66,7 @@ if (!function_exists('homeServicesMinimalImage')) {
         'abs' => __DIR__ . '/../../assets/img/service'
       ]
     ];
-    $exts = ['jpg', 'jpeg', 'png', 'webp', 'avif'];
+    $exts = ['png', 'jpg', 'jpeg', 'webp', 'avif'];
 
     $aliasMap = [
       'local-towing' => ['towing', 'tow-truck'],

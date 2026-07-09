@@ -90,7 +90,7 @@ if (!function_exists('serviceHomeImage')) {
       ['rel' => 'assets/img/gallery', 'abs' => __DIR__ . '/../../assets/img/gallery'],
       ['rel' => 'assets/img/service', 'abs' => __DIR__ . '/../../assets/img/service']
     ];
-    $exts = ['jpg', 'jpeg', 'png', 'webp', 'avif'];
+    $exts = ['png', 'jpg', 'jpeg', 'webp', 'avif'];
 
     $aliasMap = [
       'local-towing' => ['towing', 'tow-truck'],

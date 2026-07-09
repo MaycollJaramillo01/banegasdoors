@@ -48,13 +48,12 @@ $BaseURL   = rtrim(detectBaseURL(), '/') . '/';
 $Domain    = $BaseURL;
 $MAVEN     = "go-maven.com";
 $Address   = "7876 State St, Huntington Park, CA 90255";
-$PhoneName = "Español";
-$Phone2Name = "English";
+$PhoneName = "Español & English";
+$Phone2Name = "Office / Oficina";
 
-/* Una sola línea telefónica bilingüe. Si el cliente confirma una
-   segunda línea, actualizar $Phone2 aquí. */
+/* Línea principal bilingüe y línea directa de la oficina. */
 $Phone     = "+1 (323) 413-1786";
-$Phone2    = "+1 (323) 413-1786";
+$Phone2    = "+1 (323) 749-6269";
 
 function telRef($p) {
   $clean = str_replace(str_split('()-/\\:?"<>|., '), '', $p);
@@ -83,8 +82,7 @@ $Services       = "Garage door installation, replacement, spring repair, off-tra
 $Estimates      = "Free Estimates";
 $Payment        = "Cash, Card, Zelle"; /* TODO CONFIRMAR: métodos de pago reales con el cliente */
 $Experience     = "10+ Years";
-/* TODO CONFIRMAR: el sitio actual dice 9:00 AM y Yelp dice 8:30 AM. Se usa 9:00 AM (fuente: web oficial). */
-$Schedule       = "Open Monday to Saturday, 9:00 AM to 5:00 PM. Closed Sunday.";
+$Schedule       = "Monday-Friday 9:00 AM-5:00 PM. Saturday 9:00 AM-12:00 PM. Closed Sunday.";
 $Coverage       = "We serve Huntington Park, South Gate, Downey, and communities across Los Angeles County and Orange County.";
 $LicenseNote    = "Visit Our Showroom";
 $BilingualNote  = "English and Spanish Spoken";
@@ -567,7 +565,12 @@ $HomeAboutCopy = [
   'badge_label' => 'Years in the Industry',
   'images' => [
     'back' => ['src' => 'assets/img/showroom.jpg', 'alt' => 'Banegas Garage Doors showroom'],
-    'front' => ['src' => 'assets/img/showroom-2-hd.jpg', 'alt' => 'Banegas Garage Doors installation']
+    'front' => ['src' => 'assets/img/showroom.jpg', 'alt' => 'Banegas Garage Doors showroom in Huntington Park']
+  ],
+  'video' => [
+    'src' => 'assets/video/showroom.mp4',
+    'poster' => 'assets/img/showroom.jpg',
+    'label' => 'Video tour of the Banegas Garage Doors showroom in Huntington Park'
   ],
   'features' => [
     ['icon' => 'fa-warehouse', 'title' => 'New Installation', 'text' => 'Residential, commercial, and custom garage doors.'],
@@ -693,7 +696,7 @@ $FaqCopy = [
     ['q' => 'Do you offer free estimates?', 'a' => 'Yes. Every job starts with a free estimate and clear, upfront pricing.'],
     ['q' => 'Do you speak Spanish?', 'a' => 'Yes. Banegas Garage Doors Co speaks English and Spanish.'],
     ['q' => 'What areas do you cover?', 'a' => $Coverage],
-    ['q' => 'Do you have a showroom?', 'a' => 'Yes. Visit our showroom at 7876 State St, Huntington Park, CA 90255 — open Monday to Saturday, 9:00 AM to 5:00 PM.']
+    ['q' => 'Do you have a showroom?', 'a' => 'Yes. Visit our showroom at 7876 State St, Huntington Park, CA 90255. We are open Monday-Friday 9:00 AM-5:00 PM and Saturday 9:00 AM-12:00 PM. Closed Sunday.']
   ]
 ];
 
