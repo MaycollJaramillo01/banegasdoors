@@ -409,6 +409,9 @@ $footerPhoneLabel2 = trim((string) ($Phone2Name ?? 'Secondary'));
                 &copy; <?php echo date('Y'); ?> <strong><?php echo $Company; ?></strong>. <?php echo $FooterCopy['copyright_suffix'] ?? ''; ?>
             </div>
             <div class="legal-badges">
+                <?php if (!empty($LicenseNumber)): ?>
+                    <span><?php echo $LicenseNumber; ?></span>
+                <?php endif; ?>
                 <span><?php echo $LicenseNote; ?></span>
                 <span><?php echo $BilingualNote; ?></span>
             </div>

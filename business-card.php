@@ -12,6 +12,7 @@ $email = trim((string) ($Mail ?? ''));
 $schedule = trim((string) ($Schedule ?? ''));
 $coverage = trim((string) ($Coverage ?? ''));
 $license = trim((string) ($LicenseNote ?? ''));
+$licenseNumber = trim((string) ($LicenseNumber ?? ''));
 $bilingual = trim((string) ($BilingualNote ?? ''));
 $serviceType = trim((string) ($TypeOfService ?? ''));
 $about = trim((string) ($Home[0] ?? ''));
@@ -752,6 +753,7 @@ if (isset($_GET['vcard'])) {
                 <?php endif; ?>
 
                 <div class="bcnotes">
+                    <?php if ($licenseNumber !== ''): ?><span><?php echo htmlspecialchars($licenseNumber, ENT_QUOTES, 'UTF-8'); ?></span><?php endif; ?>
                     <?php if ($license !== ''): ?><span><?php echo htmlspecialchars($license, ENT_QUOTES, 'UTF-8'); ?></span><?php endif; ?>
                     <?php if ($bilingual !== ''): ?><span><?php echo htmlspecialchars($bilingual, ENT_QUOTES, 'UTF-8'); ?></span><?php endif; ?>
                 </div>

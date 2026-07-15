@@ -85,6 +85,7 @@ $Experience     = "10+ Years";
 $Schedule       = "Monday-Friday 9:00 AM-5:00 PM. Saturday 9:00 AM-12:00 PM. Closed Sunday.";
 $Coverage       = "We serve Huntington Park, South Gate, Downey, and communities across Los Angeles County and Orange County.";
 $LicenseNote    = "Visit Our Showroom";
+$LicenseNumber  = "CA LIC# 1097233";
 $BilingualNote  = "English and Spanish Spoken";
 $TypeOfService  = "Garage Door Installation, Repair, and Maintenance";
 
@@ -327,6 +328,7 @@ $Badges = [
   $Estimates,
   $Experience,
   $Coverage,
+  $LicenseNumber,
   $LicenseNote,
   $BilingualNote
 ];
@@ -588,7 +590,7 @@ $AboutHeroCopy = [
   'cta_primary' => 'Our Story',
   'cta_primary_href' => '#story',
   'cta_secondary_prefix' => 'Call',
-  'meta' => [$Experience, $Estimates, $LicenseNote, $BilingualNote],
+  'meta' => [$Experience, $Estimates, $LicenseNumber, $BilingualNote],
   'list' => [
     ['label' => 'Service area', 'value' => $Coverage],
     ['label' => 'Schedule', 'value' => $Schedule],
@@ -706,7 +708,7 @@ $AreasCopy = [
   'subtitle' => 'Coverage includes Huntington Park, South Gate, Downey, and nearby communities.',
   'cta_label' => 'Request Service in Your Area',
   'map_overlay' => 'Active Service Coverage',
-  'license_pills' => ['Free Estimates', 'English & Spanish', 'Residential & Commercial']
+  'license_pills' => [$LicenseNumber, 'Free Estimates', 'English & Spanish', 'Residential & Commercial']
 ];
 
 $CtaCopy = [
