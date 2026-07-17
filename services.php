@@ -8,7 +8,7 @@ $PageTitle = ($NavCopy['services'] ?? 'Services') . ' | ' . ($Company ?? 'Famili
 
 $PageDescription = trim((string) ($HomeServicesCopy['desc'] ?? ''));
 if ($PageDescription === '') {
-  $PageDescription = 'Local towing, long distance towing, jump starts, lockout service, and junk car buying in Palm Beach County.';
+  $PageDescription = 'Garage door installation and repair, custom doors, retractable awnings, and motorized screens across Los Angeles and Orange County.';
 }
 
 $PageCanonical = rtrim((string) ($BaseURL ?? ''), '/') . '/services.php';

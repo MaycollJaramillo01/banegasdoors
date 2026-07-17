@@ -474,7 +474,6 @@ $footerPhoneLabel2 = trim((string) ($Phone2Name ?? 'Secondary'));
         </a>
     <?php endif; ?>
 </div>
-<script src="assets/js/jquery-3.7.1.min.js"></script>
 <script src="assets/js/main.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
 <?php if (basename($_SERVER['SCRIPT_NAME'] ?? '') === 'index.php'): ?>

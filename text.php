@@ -259,7 +259,7 @@ $Phrase = [
    HOME / ABOUT
    =========================*/
 $Home = [
-  "Banegas Garage Doors Co provides garage door installation, replacement, spring repair, off-track repair, and maintenance across Huntington Park, South Gate, Downey, and communities throughout Los Angeles and Orange County.",
+  "Banegas Garage Doors Co provides garage door installation and repair, custom doors, retractable awnings, and motorized screens across Huntington Park, South Gate, Downey, and communities throughout Los Angeles and Orange County.",
   "With more than 10 years of hands-on industry experience, our bilingual team shows up on time, gives clear pricing with free estimates, and makes sure every job is done right the first time."
 ];
 
@@ -298,10 +298,10 @@ $SN[7] = "Custom Door Design";
 $SD[7] = "Custom garage door solutions that combine functionality, durability, and design, from carriage house to full view frameless.";
 
 $SN[8] = "Retractable Awnings";
-$SD[8] = "Custom retractable awnings that add comfortable shade and weather protection to patios, windows, and outdoor living areas.";
+$SD[8] = "Custom-made retractable awnings with durable aluminum components, performance fabrics, and optional automated controls for homes and commercial spaces.";
 
 $SN[9] = "Motorized Screens";
-$SD[9] = "Push-button exterior screens and solar shades for patios, garages, and large openings, designed for shade, airflow, and insect protection.";
+$SD[9] = "Motorized exterior screens with a secure zipper-track system, powder-coated aluminum components, and fabric options for solar or insect protection.";
 
 $OtherServices = [
   "Commercial Garage Doors",
@@ -350,7 +350,7 @@ $Badges = [
 ];
 
 $ExAbout = substr($About[0], 0, 145) . '...';
-$ExHome  = substr($Home[0],  0, 95)  . '...';
+$ExHome  = substr($Home[0],  0, 155) . '...';
 for ($i = 1; $i <= count($SN); $i++) {
   if (isset($SD[$i])) $ExSD[$i] = substr($SD[$i], 0, 120) . '...';
 }
@@ -490,21 +490,21 @@ $ServiceDetails = [
   ],
   'retractable-awnings' => [
     'kicker' => 'Outdoor Shade',
-    'headline' => 'Comfortable shade when you want it',
+    'headline' => 'Custom retractable shade built for your space',
     'paragraphs' => [
-      'Retractable awnings create a cooler, more comfortable patio or outdoor living area while helping protect furnishings and interior spaces from direct sun.',
-      'Each system is planned around the opening and the way you use the space, then installed for smooth extension, reliable coverage, and a clean architectural finish.'
+      'Each retractable awning is made to order for the opening, with durable aluminum components, performance fabrics, and a clean architectural finish.',
+      'Available automation options provide convenient shade control for homes, offices, hospitality spaces, and retail properties.'
     ],
-    'bullets' => ['Retractable shade on demand', 'Patios, windows, and outdoor areas', 'Multiple fabric and finish options', 'Professional measurement and installation']
+    'bullets' => ['Custom made to order', 'Aluminum and performance fabric options', 'Optional automated controls', 'Residential and commercial applications']
   ],
   'motorized-screens' => [
     'kicker' => 'Motorized Screens',
     'headline' => 'Shade and insect protection at the push of a button',
     'paragraphs' => [
-      'Motorized exterior screens help block heat and glare before they enter your space while preserving airflow and the view outside.',
-      'A secure track system keeps the screen aligned across patios, garages, and oversized openings, with convenient motorized operation and options suited to sun control or insect protection.'
+      'Motorized exterior screens help stop heat and glare before they enter the space while preserving airflow and the view outside.',
+      'The zipper-track system keeps the fabric aligned and resistant to wind and insects across patios, garages, large doors, and other oversized openings.'
     ],
-    'bullets' => ['Push-button operation', 'Heat, glare, and insect protection', 'Patios, garages, and large openings', 'Screen and solar fabric options']
+    'bullets' => ['Secure zipper-track system', 'Solar and insect fabric options', 'Patios, garages, and large openings', 'Powder-coated aluminum components']
   ]
 ];
 
