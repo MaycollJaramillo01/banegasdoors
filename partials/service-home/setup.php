@@ -62,13 +62,15 @@ if (!function_exists('serviceHomeIcon')) {
   function serviceHomeIcon($slug)
   {
     $icons = [
-      'local-towing' => 'fa-solid fa-truck-pickup',
-      'long-distance-towing' => 'fa-solid fa-road',
-      'we-buy-junk-cars' => 'fa-solid fa-recycle',
-      'jump-start-vehicles' => 'fa-solid fa-car-battery',
-      'locked-car-services' => 'fa-solid fa-key',
-      'roadside-assistance' => 'fa-solid fa-screwdriver-wrench',
-      '24-hour-towing' => 'fa-solid fa-clock'
+      'garage-door-installation' => 'fa-solid fa-warehouse',
+      'garage-door-replacement' => 'fa-solid fa-arrow-rotate-right',
+      'spring-replacement' => 'fa-solid fa-gears',
+      'off-track-door-repair' => 'fa-solid fa-screwdriver-wrench',
+      'garage-door-maintenance' => 'fa-solid fa-shield-halved',
+      'commercial-garage-doors' => 'fa-solid fa-building',
+      'custom-door-design' => 'fa-solid fa-pen-ruler',
+      'retractable-awnings' => 'fa-solid fa-umbrella-beach',
+      'motorized-screens' => 'fa-solid fa-border-all'
     ];
 
     $slug = trim((string) $slug);

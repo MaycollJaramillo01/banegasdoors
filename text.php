@@ -78,7 +78,7 @@ $MailRef = "mailto:" . $Mail;
 /*=========================
    GENERAL MESSAGES
    =========================*/
-$Services       = "Garage door installation, replacement, spring repair, off-track repair, and maintenance";
+$Services       = "Garage door installation, replacement, repair, maintenance, retractable awnings, and motorized screens";
 $Estimates      = "Free Estimates";
 $Payment        = "Cash, Card, Zelle"; /* TODO CONFIRMAR: métodos de pago reales con el cliente */
 $Experience     = "10+ Years";
@@ -297,9 +297,17 @@ $SD[6] = "Durable, high-performance door systems built for heavy daily use in co
 $SN[7] = "Custom Door Design";
 $SD[7] = "Custom garage door solutions that combine functionality, durability, and design, from carriage house to full view frameless.";
 
+$SN[8] = "Retractable Awnings";
+$SD[8] = "Custom retractable awnings that add comfortable shade and weather protection to patios, windows, and outdoor living areas.";
+
+$SN[9] = "Motorized Screens";
+$SD[9] = "Push-button exterior screens and solar shades for patios, garages, and large openings, designed for shade, airflow, and insect protection.";
+
 $OtherServices = [
   "Commercial Garage Doors",
-  "Custom Door Design"
+  "Custom Door Design",
+  "Retractable Awnings",
+  "Motorized Screens"
 ];
 
 $ServicesByCategory = [
@@ -320,6 +328,14 @@ $ServicesByCategory = [
     'service_slugs' => [
       'commercial-garage-doors',
       'custom-door-design'
+    ]
+  ],
+  [
+    'label' => 'Outdoor Comfort',
+    'summary_slug' => 'retractable-awnings',
+    'service_slugs' => [
+      'retractable-awnings',
+      'motorized-screens'
     ]
   ]
 ];
@@ -356,7 +372,9 @@ for ($i = 1; $i <= count($SN); $i++) {
 
 $OtherServicesLandingSlugs = [
   'commercial-garage-doors',
-  'custom-door-design'
+  'custom-door-design',
+  'retractable-awnings',
+  'motorized-screens'
 ];
 
 $PrimaryServiceSlugs = [
@@ -469,6 +487,24 @@ $ServiceDetails = [
       'Choose from styles like raised panel, flush panel, carriage house, full view frameless, and planks — or design something entirely your own.'
     ],
     'bullets' => ['Raised and flush panel', 'Carriage house style', 'Full view frameless', 'Plank designs']
+  ],
+  'retractable-awnings' => [
+    'kicker' => 'Outdoor Shade',
+    'headline' => 'Comfortable shade when you want it',
+    'paragraphs' => [
+      'Retractable awnings create a cooler, more comfortable patio or outdoor living area while helping protect furnishings and interior spaces from direct sun.',
+      'Each system is planned around the opening and the way you use the space, then installed for smooth extension, reliable coverage, and a clean architectural finish.'
+    ],
+    'bullets' => ['Retractable shade on demand', 'Patios, windows, and outdoor areas', 'Multiple fabric and finish options', 'Professional measurement and installation']
+  ],
+  'motorized-screens' => [
+    'kicker' => 'Motorized Screens',
+    'headline' => 'Shade and insect protection at the push of a button',
+    'paragraphs' => [
+      'Motorized exterior screens help block heat and glare before they enter your space while preserving airflow and the view outside.',
+      'A secure track system keeps the screen aligned across patios, garages, and oversized openings, with convenient motorized operation and options suited to sun control or insect protection.'
+    ],
+    'bullets' => ['Push-button operation', 'Heat, glare, and insect protection', 'Patios, garages, and large openings', 'Screen and solar fabric options']
   ]
 ];
 
@@ -630,10 +666,10 @@ $ServicesListCopy = ['eyebrow' => 'Scope', 'title' => 'Garage door services we p
 $BrandsCopy = ['tagline' => 'Trusted by Homeowners and Businesses Across LA & Orange County'];
 
 $HomeServicesCopy = [
-  'eyebrow' => 'Garage Door Services',
-  'title' => 'Everything Your',
-  'title_strong' => 'Garage Door Needs',
-  'desc' => 'New installation, replacement, spring repair, off-track service, maintenance, and commercial or custom doors.',
+  'eyebrow' => 'Doors & Outdoor Comfort',
+  'title' => 'Built Around Your',
+  'title_strong' => 'Home or Business',
+  'desc' => 'Garage door installation and repair, custom doors, retractable awnings, and motorized screens for homes and businesses.',
   'link_label' => 'Contact',
   'more_title' => 'Not Sure What You Need?',
   'more_desc' => 'Call and describe the problem — we will explain your options and give you a free estimate.',
